@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { useTranslation } from "@/components/LanguageProvider";
+import { MandapIcon } from "@/components/LagnManchLogo";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -12,16 +13,21 @@ export default function Navbar() {
     <nav className="bg-maroon text-white shadow-md sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <Link href="/" className="text-2xl font-bold tracking-tight">
-            <span className="text-gold">Lagn</span>Manch
+
+          {/* Logo: mandap icon + brand name */}
+          <Link href="/" className="flex items-center gap-2 group">
+            <MandapIcon className="h-9 w-auto opacity-95 group-hover:opacity-100 transition" />
+            <span className="text-xl font-bold tracking-tight leading-none">
+              <span className="text-gold">Lagn</span>Manch
+            </span>
           </Link>
 
           {/* Desktop nav */}
           <div className="hidden md:flex items-center gap-6">
-            <Link href="/" className="hover:text-gold transition">{t.nav.home}</Link>
-            <Link href="/browse" className="hover:text-gold transition">{t.nav.browse}</Link>
-            <Link href="/about" className="hover:text-gold transition">{t.nav.about}</Link>
-            <Link href="/contact" className="hover:text-gold transition">{t.nav.contact}</Link>
+            <Link href="/" className="hover:text-gold transition text-sm">{t.nav.home}</Link>
+            <Link href="/browse" className="hover:text-gold transition text-sm">{t.nav.browse}</Link>
+            <Link href="/about" className="hover:text-gold transition text-sm">{t.nav.about}</Link>
+            <Link href="/contact" className="hover:text-gold transition text-sm">{t.nav.contact}</Link>
 
             {/* Language Toggle */}
             <button
@@ -36,15 +42,14 @@ export default function Navbar() {
 
             <Link
               href="/create-profile"
-              className="bg-gold text-maroon px-4 py-2 rounded-lg font-semibold hover:bg-yellow-400 transition"
+              className="bg-gold text-maroon px-4 py-2 rounded-lg font-semibold hover:bg-yellow-400 transition text-sm"
             >
               {t.nav.createProfile}
             </Link>
           </div>
 
-          {/* Mobile hamburger */}
+          {/* Mobile: lang toggle + hamburger */}
           <div className="flex items-center gap-3 md:hidden">
-            {/* Mobile Language Toggle */}
             <button
               onClick={toggleLanguage}
               className="flex items-center gap-1 bg-gold/20 border border-gold/40 rounded-full px-2.5 py-1 text-xs font-medium hover:bg-gold/30 transition"
@@ -73,7 +78,7 @@ export default function Navbar() {
 
         {/* Mobile menu */}
         {menuOpen && (
-          <div className="md:hidden pb-4 space-y-2">
+          <div className="md:hidden pb-4 space-y-2 border-t border-white/10 pt-3">
             <Link href="/" onClick={() => setMenuOpen(false)} className="block py-2 hover:text-gold">{t.nav.home}</Link>
             <Link href="/browse" onClick={() => setMenuOpen(false)} className="block py-2 hover:text-gold">{t.nav.browse}</Link>
             <Link href="/about" onClick={() => setMenuOpen(false)} className="block py-2 hover:text-gold">{t.nav.about}</Link>

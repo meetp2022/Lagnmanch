@@ -1,0 +1,18 @@
+{
+  "name": "LagnManch – Kodi Patel Matrimonial Platform",
+  "short_name": "LagnManch",
+  "description": "A modern matrimonial platform built specifically for the Kodi Patel community.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fdf8f0",
+  "theme_color": "#800020",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
