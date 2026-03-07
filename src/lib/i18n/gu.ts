@@ -6,6 +6,10 @@ export const gu = {
     about: "અમારા વિશે",
     contact: "સંપર્ક",
     createProfile: "પ્રોફાઇલ બનાવો",
+    login: "લોગિન",
+    register: "રજિસ્ટર",
+    dashboard: "ડેશબોર્ડ",
+    logout: "લોગઆઉટ",
     toggleMenu: "મેનૂ ટોગલ",
   },
 
@@ -232,6 +236,48 @@ export const gu = {
     prefEducation: "પસંદ. શિક્ષણ",
     status: "સ્થિતિ",
     created: "બનાવ્યું",
+  },
+
+  // Auth
+  auth: {
+    loginTitle: "તમારા એકાઉન્ટમાં સાઇન ઇન કરો",
+    registerTitle: "એકાઉન્ટ બનાવો",
+    email: "ઈમેલ",
+    password: "પાસવર્ડ",
+    confirmPassword: "પાસવર્ડ ફરીથી લખો",
+    loginButton: "સાઇન ઇન",
+    registerButton: "એકાઉન્ટ બનાવો",
+    loggingIn: "સાઇન ઇન થઈ રહ્યું છે...",
+    registering: "એકાઉન્ટ બની રહ્યું છે...",
+    noAccount: "એકાઉન્ટ નથી?",
+    hasAccount: "પહેલાથી એકાઉન્ટ છે?",
+    registerLink: "રજિસ્ટર કરો",
+    loginLink: "સાઇન ઇન કરો",
+    passwordHint: "ઓછામાં ઓછા 6 અક્ષરો હોવા જોઈએ",
+    passwordMismatch: "પાસવર્ડ મેળ ખાતા નથી",
+    passwordTooShort: "પાસવર્ડ ઓછામાં ઓછા 6 અક્ષરોનો હોવો જોઈએ",
+    checkEmail: "તમારું ઈમેલ ચકાસો",
+    confirmationSent: "અમે પુષ્ટિ લિંક મોકલી છે",
+    authFailed: "પ્રમાણીકરણ નિષ્ફળ. કૃપા કરી ફરીથી પ્રયાસ કરો.",
+  },
+
+  // Dashboard
+  dashboard: {
+    title: "મારું ડેશબોર્ડ",
+    loading: "તમારી પ્રોફાઇલ લોડ થઈ રહી છે...",
+    logout: "સાઇન આઉટ",
+    noProfile: "હજુ સુધી કોઈ પ્રોફાઇલ નથી",
+    noProfileDesc: "તમે હજુ સુધી પ્રોફાઇલ બનાવી નથી. અમારા પ્લેટફોર્મ પર લિસ્ટ થવા માટે એક બનાવો.",
+    createProfile: "તમારી પ્રોફાઇલ બનાવો",
+    createdOn: "બનાવ્યું",
+    pendingMessage: "તમારી પ્રોફાઇલ સમીક્ષા હેઠળ છે. અમારી ટીમ ટૂંક સમયમાં ચકાસશે અને મંજૂર કરશે.",
+    rejectedMessage: "તમારી પ્રોફાઇલ મંજૂર થઈ નથી. વધુ માહિતી માટે કૃપા કરી અમારો સંપર્ક કરો.",
+    approvedMessage: "તમારી પ્રોફાઇલ લાઇવ છે અને પ્લેટફોર્મ પર અન્ય વપરાશકર્તાઓને દેખાય છે.",
+    status: {
+      pending: "સમીક્ષા હેઠળ",
+      approved: "મંજૂર",
+      rejected: "નામંજૂર",
+    },
   },
 
   // Common

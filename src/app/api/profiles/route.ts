@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createAdminClient } from "@/lib/supabase";
+import { createAdminClient } from "@/lib/supabase/admin";
+import { createClient } from "@/lib/supabase/server";
 
 export const dynamic = "force-dynamic";
 
@@ -36,9 +37,34 @@ export async function GET(request: NextRequest) {
   return NextResponse.json(data);
 }
 
-// POST /api/profiles — create a new profile
+// POST /api/profiles — create a new profile (requires auth)
 export async function POST(request: NextRequest) {
-  const supabase = createAdminClient();
+  const adminSupabase = createAdminClient();
+
+  // Get the authenticated user
+  const supabase = await createClient();
+  const {
+    data: { user },
+    error: authError,
+  } = await supabase.auth.getUser();
+
+  if (authError || !user) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
+  // Check if user already has a profile
+  const { data: existing } = await adminSupabase
+    .from("profiles")
+    .select("id")
+    .eq("user_id", user.id)
+    .single();
+
+  if (existing) {
+    return NextResponse.json(
+      { error: "You already have a profile" },
+      { status: 409 }
+    );
+  }
 
   try {
     const body = await request.json();
@@ -53,6 +79,7 @@ export async function POST(request: NextRequest) {
     }
 
     const profileData = {
+      user_id: user.id,
       full_name: body.full_name,
       gender: body.gender,
       date_of_birth: body.date_of_birth,
@@ -79,7 +106,7 @@ export async function POST(request: NextRequest) {
       profile_status: "pending" as const,
     };
 
-    const { data, error } = await supabase
+    const { data, error } = await adminSupabase
       .from("profiles")
       .insert(profileData)
       .select()

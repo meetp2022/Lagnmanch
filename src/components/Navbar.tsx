@@ -3,11 +3,13 @@
 import Link from "next/link";
 import { useState } from "react";
 import { useTranslation } from "@/components/LanguageProvider";
+import { useAuth } from "@/components/AuthProvider";
 import { AppIcon } from "@/components/LagnaManchLogo";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const { locale, toggleLanguage, t } = useTranslation();
+  const { user, loading, signOut } = useAuth();
 
   return (
     <nav className="bg-maroon text-white shadow-md sticky top-0 z-50">
@@ -40,12 +42,42 @@ export default function Navbar() {
               <span className={locale === "gu" ? "text-gold font-bold" : "text-white/60"}>ગુજ</span>
             </button>
 
-            <Link
-              href="/create-profile"
-              className="bg-gold text-maroon px-4 py-2 rounded-lg font-semibold hover:bg-yellow-400 transition text-sm"
-            >
-              {t.nav.createProfile}
-            </Link>
+            {/* Auth buttons */}
+            {!loading && (
+              <>
+                {user ? (
+                  <>
+                    <Link
+                      href="/dashboard"
+                      className="hover:text-gold transition text-sm font-medium"
+                    >
+                      {t.nav.dashboard}
+                    </Link>
+                    <button
+                      onClick={signOut}
+                      className="text-sm text-white/70 hover:text-gold transition"
+                    >
+                      {t.nav.logout}
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <Link
+                      href="/login"
+                      className="hover:text-gold transition text-sm font-medium"
+                    >
+                      {t.nav.login}
+                    </Link>
+                    <Link
+                      href="/register"
+                      className="bg-gold text-maroon px-4 py-2 rounded-lg font-semibold hover:bg-yellow-400 transition text-sm"
+                    >
+                      {t.nav.register}
+                    </Link>
+                  </>
+                )}
+              </>
+            )}
           </div>
 
           {/* Mobile: lang toggle + hamburger */}
@@ -83,13 +115,45 @@ export default function Navbar() {
             <Link href="/browse" onClick={() => setMenuOpen(false)} className="block py-2 hover:text-gold">{t.nav.browse}</Link>
             <Link href="/about" onClick={() => setMenuOpen(false)} className="block py-2 hover:text-gold">{t.nav.about}</Link>
             <Link href="/contact" onClick={() => setMenuOpen(false)} className="block py-2 hover:text-gold">{t.nav.contact}</Link>
-            <Link
-              href="/create-profile"
-              onClick={() => setMenuOpen(false)}
-              className="block bg-gold text-maroon px-4 py-2 rounded-lg font-semibold text-center hover:bg-yellow-400"
-            >
-              {t.nav.createProfile}
-            </Link>
+
+            {!loading && (
+              <>
+                {user ? (
+                  <>
+                    <Link
+                      href="/dashboard"
+                      onClick={() => setMenuOpen(false)}
+                      className="block py-2 hover:text-gold font-medium"
+                    >
+                      {t.nav.dashboard}
+                    </Link>
+                    <button
+                      onClick={() => { setMenuOpen(false); signOut(); }}
+                      className="block py-2 text-white/70 hover:text-gold w-full text-left"
+                    >
+                      {t.nav.logout}
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <Link
+                      href="/login"
+                      onClick={() => setMenuOpen(false)}
+                      className="block py-2 hover:text-gold font-medium"
+                    >
+                      {t.nav.login}
+                    </Link>
+                    <Link
+                      href="/register"
+                      onClick={() => setMenuOpen(false)}
+                      className="block bg-gold text-maroon px-4 py-2 rounded-lg font-semibold text-center hover:bg-yellow-400"
+                    >
+                      {t.nav.register}
+                    </Link>
+                  </>
+                )}
+              </>
+            )}
           </div>
         )}
       </div>

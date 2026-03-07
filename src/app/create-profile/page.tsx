@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { supabase } from "@/lib/supabase";
+import { createClient } from "@/lib/supabase/client";
 import { useTranslation } from "@/components/LanguageProvider";
 
 const CITIES = ["Vapi", "Umbergaon", "Pardi", "Daman", "Silvassa", "Mumbai", "Pune", "Other"];
@@ -31,6 +31,7 @@ export default function CreateProfilePage() {
       let photo_url = null;
 
       if (photoFile) {
+        const supabase = createClient();
         const fileExt = photoFile.name.split(".").pop();
         const fileName = `${Date.now()}-${Math.random().toString(36).slice(2)}.${fileExt}`;
 

@@ -6,6 +6,10 @@ export const en = {
     about: "About",
     contact: "Contact",
     createProfile: "Create Profile",
+    login: "Login",
+    register: "Register",
+    dashboard: "Dashboard",
+    logout: "Logout",
     toggleMenu: "Toggle menu",
   },
 
@@ -232,6 +236,48 @@ export const en = {
     prefEducation: "Pref. Education",
     status: "Status",
     created: "Created",
+  },
+
+  // Auth
+  auth: {
+    loginTitle: "Sign In to Your Account",
+    registerTitle: "Create an Account",
+    email: "Email",
+    password: "Password",
+    confirmPassword: "Confirm Password",
+    loginButton: "Sign In",
+    registerButton: "Create Account",
+    loggingIn: "Signing in...",
+    registering: "Creating account...",
+    noAccount: "Don't have an account?",
+    hasAccount: "Already have an account?",
+    registerLink: "Register",
+    loginLink: "Sign In",
+    passwordHint: "Must be at least 6 characters",
+    passwordMismatch: "Passwords do not match",
+    passwordTooShort: "Password must be at least 6 characters",
+    checkEmail: "Check Your Email",
+    confirmationSent: "We've sent a confirmation link to",
+    authFailed: "Authentication failed. Please try again.",
+  },
+
+  // Dashboard
+  dashboard: {
+    title: "My Dashboard",
+    loading: "Loading your profile...",
+    logout: "Sign Out",
+    noProfile: "No Profile Yet",
+    noProfileDesc: "You haven't created a profile yet. Create one to get listed on our platform.",
+    createProfile: "Create Your Profile",
+    createdOn: "Created on",
+    pendingMessage: "Your profile is under review. Our team will verify and approve it shortly.",
+    rejectedMessage: "Your profile was not approved. Please contact us for more information.",
+    approvedMessage: "Your profile is live and visible to other users on the platform.",
+    status: {
+      pending: "Under Review",
+      approved: "Approved",
+      rejected: "Rejected",
+    },
   },
 
   // Common
