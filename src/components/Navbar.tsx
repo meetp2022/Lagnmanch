@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { useTranslation } from "@/components/LanguageProvider";
-import { MandapIcon } from "@/components/LagnaManchLogo";
+import { AppIcon } from "@/components/LagnaManchLogo";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -16,7 +16,7 @@ export default function Navbar() {
 
           {/* Logo: mandap icon + brand name */}
           <Link href="/" className="flex items-center gap-2 group">
-            <MandapIcon className="h-9 w-auto opacity-95 group-hover:opacity-100 transition" />
+            <AppIcon size={40} />
             <span className="text-xl font-bold tracking-tight leading-none">
               <span className="text-gold">Lagna</span>Manch
             </span>
