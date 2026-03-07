@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Geist } from "next/font/google";
+import { Geist, Great_Vibes } from "next/font/google";
 import { LanguageProvider } from "@/components/LanguageProvider";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -10,13 +10,19 @@ const geistSans = Geist({
   subsets: ["latin"],
 });
 
-const siteUrl = "https://lagnmanch.vercel.app";
+const greatVibes = Great_Vibes({
+  weight: "400",
+  variable: "--font-great-vibes",
+  subsets: ["latin"],
+});
+
+const siteUrl = "https://lagnamanch.vercel.app";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "LagnManch – Kodi Patel Matrimonial Platform",
-    template: "%s | LagnManch",
+    default: "LagnaManch – Kodi Patel Matrimonial Platform",
+    template: "%s | LagnaManch",
   },
   description:
     "A modern matrimonial platform built specifically for the Kodi Patel community. Find your perfect match from trusted Kodi Patel families across South Gujarat and beyond.",
@@ -25,25 +31,25 @@ export const metadata: Metadata = {
     "Kodi Patel marriage",
     "Gujarati matrimonial",
     "Patel marriage",
-    "LagnManch",
-    "lagnmanch",
+    "LagnaManch",
+    "lagnamanch",
     "South Gujarat matrimony",
   ],
-  authors: [{ name: "LagnManch" }],
-  creator: "LagnManch",
-  publisher: "LagnManch",
+  authors: [{ name: "LagnaManch" }],
+  creator: "LagnaManch",
+  publisher: "LagnaManch",
   openGraph: {
     type: "website",
     locale: "en_IN",
     url: siteUrl,
-    siteName: "LagnManch",
-    title: "LagnManch – Kodi Patel Matrimonial Platform",
+    siteName: "LagnaManch",
+    title: "LagnaManch – Kodi Patel Matrimonial Platform",
     description:
       "A modern matrimonial platform built specifically for the Kodi Patel community. Find your perfect match from trusted families.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "LagnManch – Kodi Patel Matrimonial Platform",
+    title: "LagnaManch – Kodi Patel Matrimonial Platform",
     description:
       "A modern matrimonial platform built specifically for the Kodi Patel community.",
   },
@@ -60,7 +66,7 @@ export const metadata: Metadata = {
   appleWebApp: {
     capable: true,
     statusBarStyle: "black-translucent",
-    title: "LagnManch",
+    title: "LagnaManch",
   },
 };
 
@@ -75,7 +81,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${geistSans.variable} antialiased flex flex-col min-h-screen`}>
+      <body className={`${geistSans.variable} ${greatVibes.variable} antialiased flex flex-col min-h-screen`}>
         <LanguageProvider>
           <Navbar />
           <main className="flex-1">{children}</main>

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { useTranslation } from "@/components/LanguageProvider";
-import { MandapIcon } from "@/components/LagnManchLogo";
+import { MandapIcon } from "@/components/LagnaManchLogo";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -18,7 +18,7 @@ export default function Navbar() {
           <Link href="/" className="flex items-center gap-2 group">
             <MandapIcon className="h-9 w-auto opacity-95 group-hover:opacity-100 transition" />
             <span className="text-xl font-bold tracking-tight leading-none">
-              <span className="text-gold">Lagn</span>Manch
+              <span className="text-gold">Lagna</span>Manch
             </span>
           </Link>
 

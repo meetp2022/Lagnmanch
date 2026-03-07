@@ -1,4 +1,4 @@
-# LagnManch - Deployment Guide
+# LagnaManch - Deployment Guide
 
 ## 1. Supabase Setup
 

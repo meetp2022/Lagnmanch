@@ -16,7 +16,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    const saved = localStorage.getItem("lagnmanch-lang") as Locale | null;
+    const saved = localStorage.getItem("lagnamanch-lang") as Locale | null;
     if (saved && (saved === "en" || saved === "gu")) {
       setLocale(saved);
     }
@@ -25,7 +25,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     if (mounted) {
-      localStorage.setItem("lagnmanch-lang", locale);
+      localStorage.setItem("lagnamanch-lang", locale);
       document.documentElement.lang = locale;
     }
   }, [locale, mounted]);

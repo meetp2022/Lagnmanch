@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "LagnManch – A Kodi Patel Matrimonial Platform";
+export const alt = "LagnaManch – A Kodi Patel Matrimonial Platform";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -56,7 +56,7 @@ export default function OGImage() {
 
           {/* Brand name */}
           <div style={{ display: "flex", alignItems: "baseline", gap: "0px" }}>
-            <span style={{ fontSize: "96px", fontWeight: "900", color: "#CDA144", lineHeight: 1 }}>Lagn</span>
+            <span style={{ fontSize: "96px", fontWeight: "900", color: "#CDA144", lineHeight: 1 }}>Lagna</span>
             <span style={{ fontSize: "96px", fontWeight: "900", color: "#ffffff", lineHeight: 1 }}>Manch</span>
           </div>
 
@@ -102,7 +102,7 @@ export default function OGImage() {
           color: "rgba(205,161,68,0.5)",
           letterSpacing: "2px",
         }}>
-          lagnmanch.vercel.app
+          lagnamanch.vercel.app
         </div>
       </div>
     ),

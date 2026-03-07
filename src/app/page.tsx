@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useTranslation } from "@/components/LanguageProvider";
+import { MandapIcon } from "@/components/LagnaManchLogo";
 
 export default function HomePage() {
   const { t } = useTranslation();
@@ -16,21 +17,48 @@ export default function HomePage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="bg-maroon text-white">
-        <div className="max-w-7xl mx-auto px-4 py-20 sm:py-28 text-center">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4">
-            <span className="text-gold">Lagn</span>Manch
+      <section className="bg-maroon text-white relative overflow-hidden">
+        {/* Subtle decorative background pattern */}
+        <div className="absolute inset-0 opacity-[0.04]" style={{
+          backgroundImage: `radial-gradient(circle at 25% 25%, #CDA144 1px, transparent 1px), radial-gradient(circle at 75% 75%, #CDA144 1px, transparent 1px)`,
+          backgroundSize: '60px 60px',
+        }} />
+
+        <div className="max-w-7xl mx-auto px-4 py-20 sm:py-28 text-center relative z-10">
+          {/* Mandap Icon */}
+          <div className="flex justify-center mb-6">
+            <MandapIcon className="h-20 sm:h-24 w-auto opacity-90" />
+          </div>
+
+          {/* Brand Name in Script Font */}
+          <h1 className="font-[family-name:var(--font-great-vibes)] text-gold text-6xl sm:text-7xl md:text-8xl lg:text-9xl mb-4 leading-tight">
+            LagnaManch
           </h1>
-          <p className="text-xl sm:text-2xl text-gray-200 mb-2">
+
+          {/* Decorative Gold Divider */}
+          <div className="flex items-center justify-center gap-3 mb-5">
+            <div className="w-12 sm:w-20 h-px bg-gradient-to-r from-transparent to-gold" />
+            <div className="w-1.5 h-1.5 bg-gold rotate-45" />
+            <div className="w-2 h-2 bg-gold rounded-full" />
+            <div className="w-1.5 h-1.5 bg-gold rotate-45" />
+            <div className="w-12 sm:w-20 h-px bg-gradient-to-l from-transparent to-gold" />
+          </div>
+
+          {/* Tagline */}
+          <p className="text-sm sm:text-base uppercase tracking-[0.25em] text-gold/80 font-medium mb-4">
             {t.home.subtitle}
           </p>
-          <p className="text-lg text-gray-300 max-w-2xl mx-auto mb-10">
+
+          {/* Description */}
+          <p className="text-base sm:text-lg text-gray-300 max-w-2xl mx-auto mb-10">
             {t.home.description}
           </p>
+
+          {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/create-profile"
-              className="bg-gold text-maroon px-8 py-3 rounded-lg text-lg font-bold hover:bg-yellow-400 transition"
+              className="bg-gold text-maroon px-8 py-3 rounded-lg text-lg font-bold hover:bg-yellow-400 transition shadow-lg shadow-gold/20"
             >
               {t.home.createProfile}
             </Link>

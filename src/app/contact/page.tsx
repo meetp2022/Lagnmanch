@@ -21,7 +21,7 @@ export default function ContactPage() {
               </svg>
               <div>
                 <p className="text-sm text-gray-500">{t.contact.email}</p>
-                <p className="text-gray-800">contact@lagnmanch.com</p>
+                <p className="text-gray-800">contact@lagnamanch.com</p>
               </div>
             </div>
 

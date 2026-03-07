@@ -19,17 +19,17 @@ export const en = {
     contact: "Contact",
     communityFocus: "Community Focus",
     communityDescription: "Serving the Kodi Patel families of South Gujarat — Vapi, Umbergaon, Pardi, Daman, and Silvassa.",
-    copyright: "LagnManch. Built by a member of the Kodi Patel community.",
+    copyright: "LagnaManch. Built by a member of the Kodi Patel community.",
   },
 
   // Home Page
   home: {
-    title: "LagnManch",
+    title: "LagnaManch",
     subtitle: "A Kodi Patel Matrimonial Platform",
     description: "A modern matrimonial platform built specifically for the Kodi Patel community. Find your perfect life partner from trusted families.",
     createProfile: "Create Your Profile",
     browseProfiles: "Browse Profiles",
-    whyChoose: "Why Choose LagnManch?",
+    whyChoose: "Why Choose LagnaManch?",
     communityFocused: "Community Focused",
     communityFocusedDesc: "Built exclusively for the Kodi Patel community. Every profile belongs to our community.",
     verifiedProfiles: "Verified Profiles",
@@ -46,7 +46,7 @@ export const en = {
     step4Title: "Find a Match",
     step4Desc: "Browse profiles and connect with potential matches",
     ctaTitle: "Built by a member of the Kodi Patel community, for Kodi Patel families",
-    ctaDescription: "Join the growing number of families who trust LagnManch for finding the right match.",
+    ctaDescription: "Join the growing number of families who trust LagnaManch for finding the right match.",
     ctaButton: "Create Your Profile Today",
   },
 
@@ -158,9 +158,9 @@ export const en = {
 
   // About Page
   about: {
-    title: "About LagnManch",
-    intro: "LagnManch is a modern matrimonial platform built specifically for the Kodi Patel community. Our mission is to help families find the right match through a trusted, community-focused digital platform.",
-    tradition: "Traditionally, matrimonial matchmaking in our community has relied on word of mouth, family connections, and local events. While these methods carry deep cultural value, they can be limiting in reach. LagnManch aims to complement traditional matchmaking by providing a digital space where families can discover profiles from across the community.",
+    title: "About LagnaManch",
+    intro: "LagnaManch is a modern matrimonial platform built specifically for the Kodi Patel community. Our mission is to help families find the right match through a trusted, community-focused digital platform.",
+    tradition: "Traditionally, matrimonial matchmaking in our community has relied on word of mouth, family connections, and local events. While these methods carry deep cultural value, they can be limiting in reach. LagnaManch aims to complement traditional matchmaking by providing a digital space where families can discover profiles from across the community.",
     valuesTitle: "Our Values",
     value1Label: "Community First:",
     value1: "Built by a member of the Kodi Patel community, for Kodi Patel families.",

@@ -7,7 +7,7 @@ export function MandapIcon({ className = "h-9 w-auto" }: { className?: string })
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 200 90"
       className={className}
-      aria-label="LagnManch mandap icon"
+      aria-label="LagnaManch mandap icon"
     >
       {/* Stage / base */}
       <path d="M 35 77 Q 100 68 165 77" fill="none" stroke="#CDA144" strokeWidth="1" />

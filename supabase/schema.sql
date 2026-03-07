@@ -1,4 +1,4 @@
--- LagnManch Database Schema
+-- LagnaManch Database Schema
 -- Run this in Supabase SQL Editor
 
 -- Create enum for profile status
