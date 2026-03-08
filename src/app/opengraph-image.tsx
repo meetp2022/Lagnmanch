@@ -5,29 +5,7 @@ export const alt = "LagnaManch – A Kodi Patel Matrimonial Platform";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-export default async function OGImage() {
-  // Fetch Great Vibes font from Google Fonts for the calligraphic title
-  let fontData: ArrayBuffer | null = null;
-  try {
-    const cssResponse = await fetch(
-      "https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap",
-      {
-        headers: {
-          // Safari UA — ensures Google returns woff (supported by Satori)
-          "User-Agent":
-            "Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_8; de-at) AppleWebKit/533.21.1 (KHTML, like Gecko) Version/5.0.5 Safari/533.21.1",
-        },
-      }
-    );
-    const css = await cssResponse.text();
-    const urlMatch = css.match(/src: url\((.+?)\) format/);
-    if (urlMatch?.[1]) {
-      fontData = await fetch(urlMatch[1]).then((r) => r.arrayBuffer());
-    }
-  } catch {
-    // If font fetch fails, fall back to serif
-  }
-
+export default function OGImage() {
   return new ImageResponse(
     (
       <div
@@ -50,24 +28,24 @@ export default async function OGImage() {
         <div style={{ position: "absolute", bottom: 0, left: 0, width: "200px", height: "200px", borderBottom: "3px solid #CDA144", borderLeft: "3px solid #CDA144", borderBottomLeftRadius: "4px" }} />
         <div style={{ position: "absolute", bottom: 0, right: 0, width: "200px", height: "200px", borderBottom: "3px solid #CDA144", borderRight: "3px solid #CDA144", borderBottomRightRadius: "4px" }} />
 
-        {/* Horizontal gold lines */}
+        {/* Top decorative line */}
         <div style={{ position: "absolute", top: "60px", left: "120px", right: "120px", height: "1px", background: "linear-gradient(to right, transparent, #CDA144, transparent)" }} />
         <div style={{ position: "absolute", bottom: "60px", left: "120px", right: "120px", height: "1px", background: "linear-gradient(to right, transparent, #CDA144, transparent)" }} />
 
         {/* Main content */}
-        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "20px" }}>
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "24px" }}>
 
           {/* Icon box */}
           <div style={{
-            width: "90px",
-            height: "90px",
+            width: "100px",
+            height: "100px",
             background: "linear-gradient(145deg, #A21E31, #6C0E1A)",
-            borderRadius: "18px",
+            borderRadius: "20px",
             border: "2px solid #CDA144",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            fontSize: "40px",
+            fontSize: "48px",
             fontWeight: "bold",
             color: "#CDA144",
             letterSpacing: "2px",
@@ -76,18 +54,10 @@ export default async function OGImage() {
             LM
           </div>
 
-          {/* Brand name — Great Vibes calligraphic font */}
-          <div
-            style={{
-              fontFamily: fontData ? "'Great Vibes'" : "Georgia, serif",
-              fontSize: "130px",
-              fontWeight: 400,
-              color: "#CDA144",
-              lineHeight: 1,
-              letterSpacing: "2px",
-            }}
-          >
-            LagnaManch
+          {/* Brand name */}
+          <div style={{ display: "flex", alignItems: "baseline", gap: "0px" }}>
+            <span style={{ fontSize: "96px", fontWeight: "900", color: "#CDA144", lineHeight: 1 }}>Lagna</span>
+            <span style={{ fontSize: "96px", fontWeight: "900", color: "#ffffff", lineHeight: 1 }}>Manch</span>
           </div>
 
           {/* Gold divider */}
@@ -101,10 +71,10 @@ export default async function OGImage() {
 
           {/* Tagline */}
           <div style={{
-            fontSize: "30px",
+            fontSize: "32px",
             color: "#f5d78a",
             fontWeight: "400",
-            letterSpacing: "4px",
+            letterSpacing: "3px",
             textTransform: "uppercase",
           }}>
             A Kodi Patel Matrimonial Platform
@@ -136,20 +106,6 @@ export default async function OGImage() {
         </div>
       </div>
     ),
-    {
-      ...size,
-      ...(fontData
-        ? {
-            fonts: [
-              {
-                name: "Great Vibes",
-                data: fontData,
-                style: "normal",
-                weight: 400,
-              },
-            ],
-          }
-        : {}),
-    }
+    { ...size }
   );
 }
