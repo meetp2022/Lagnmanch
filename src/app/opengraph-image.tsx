@@ -102,7 +102,7 @@ export default function OGImage() {
           color: "rgba(205,161,68,0.5)",
           letterSpacing: "2px",
         }}>
-          lagnamanch.vercel.app
+          lagnamanch.com
         </div>
       </div>
     ),

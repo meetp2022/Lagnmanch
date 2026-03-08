@@ -17,7 +17,7 @@ const greatVibes = Great_Vibes({
   subsets: ["latin"],
 });
 
-const siteUrl = "https://lagnamanch.vercel.app";
+const siteUrl = "https://lagnamanch.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

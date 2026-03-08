@@ -24,50 +24,66 @@ export default function HomePage() {
           backgroundSize: '60px 60px',
         }} />
 
-        <div className="max-w-7xl mx-auto px-4 py-20 sm:py-28 text-center relative z-10">
-          {/* Mandap Icon */}
-          <div className="flex justify-center mb-6">
-            <MandapIcon className="h-20 sm:h-24 w-auto opacity-90" />
-          </div>
+        <div className="max-w-7xl mx-auto px-4 py-16 sm:py-24 relative z-10">
+          <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
+            {/* Left side — branding & CTA */}
+            <div className="flex-1 text-center lg:text-left">
+              {/* Mandap Icon */}
+              <div className="flex justify-center lg:justify-start mb-6">
+                <MandapIcon className="h-16 sm:h-20 w-auto opacity-90" />
+              </div>
 
-          {/* Brand Name in Script Font */}
-          <h1 className="font-[family-name:var(--font-great-vibes)] text-gold text-6xl sm:text-7xl md:text-8xl lg:text-9xl mb-4 leading-tight">
-            LagnaManch
-          </h1>
+              {/* Brand Name in Script Font */}
+              <h1 className="font-[family-name:var(--font-great-vibes)] text-gold text-5xl sm:text-6xl md:text-7xl lg:text-8xl mb-4 leading-tight">
+                LagnaManch
+              </h1>
 
-          {/* Decorative Gold Divider */}
-          <div className="flex items-center justify-center gap-3 mb-5">
-            <div className="w-12 sm:w-20 h-px bg-gradient-to-r from-transparent to-gold" />
-            <div className="w-1.5 h-1.5 bg-gold rotate-45" />
-            <div className="w-2 h-2 bg-gold rounded-full" />
-            <div className="w-1.5 h-1.5 bg-gold rotate-45" />
-            <div className="w-12 sm:w-20 h-px bg-gradient-to-l from-transparent to-gold" />
-          </div>
+              {/* Decorative Gold Divider */}
+              <div className="flex items-center justify-center lg:justify-start gap-3 mb-5">
+                <div className="w-12 sm:w-20 h-px bg-gradient-to-r from-transparent to-gold" />
+                <div className="w-1.5 h-1.5 bg-gold rotate-45" />
+                <div className="w-2 h-2 bg-gold rounded-full" />
+                <div className="w-1.5 h-1.5 bg-gold rotate-45" />
+                <div className="w-12 sm:w-20 h-px bg-gradient-to-l from-transparent to-gold" />
+              </div>
 
-          {/* Tagline */}
-          <p className="text-sm sm:text-base uppercase tracking-[0.25em] text-gold/80 font-medium mb-4">
-            {t.home.subtitle}
-          </p>
+              {/* Tagline */}
+              <p className="text-sm sm:text-base uppercase tracking-[0.25em] text-gold/80 font-medium mb-4">
+                {t.home.subtitle}
+              </p>
 
-          {/* Description */}
-          <p className="text-base sm:text-lg text-gray-300 max-w-2xl mx-auto mb-10">
-            {t.home.description}
-          </p>
+              {/* Description */}
+              <p className="text-base sm:text-lg text-gray-300 max-w-xl mb-10">
+                {t.home.description}
+              </p>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/create-profile"
-              className="bg-gold text-maroon px-8 py-3 rounded-lg text-lg font-bold hover:bg-yellow-400 transition shadow-lg shadow-gold/20"
-            >
-              {t.home.createProfile}
-            </Link>
-            <Link
-              href="/browse"
-              className="border-2 border-gold text-gold px-8 py-3 rounded-lg text-lg font-semibold hover:bg-gold hover:text-maroon transition"
-            >
-              {t.home.browseProfiles}
-            </Link>
+              {/* CTA Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                <Link
+                  href="/create-profile"
+                  className="bg-gold text-maroon px-8 py-3 rounded-lg text-lg font-bold hover:bg-yellow-400 transition shadow-lg shadow-gold/20"
+                >
+                  {t.home.createProfile}
+                </Link>
+                <Link
+                  href="/browse"
+                  className="border-2 border-gold text-gold px-8 py-3 rounded-lg text-lg font-semibold hover:bg-gold hover:text-maroon transition"
+                >
+                  {t.home.browseProfiles}
+                </Link>
+              </div>
+            </div>
+
+            {/* Right side — circular photo */}
+            <div className="shrink-0 flex justify-center">
+              <div className="w-56 h-56 sm:w-64 sm:h-64 lg:w-80 lg:h-80 rounded-full overflow-hidden border-4 border-gold/60 shadow-2xl shadow-gold/20 ring-4 ring-gold/10 ring-offset-4 ring-offset-maroon">
+                <img
+                  src="/hero-photo.png"
+                  alt="LagnaManch — Kodi Patel Matrimonial"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </section>
