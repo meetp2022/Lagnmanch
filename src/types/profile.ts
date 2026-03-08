@@ -6,7 +6,10 @@ export interface Profile {
   gender: "Male" | "Female";
   date_of_birth: string;
   age: number;
+  district: string | null;
+  taluka: string | null;
   city: string;
+  pincode: string | null;
   current_location: string;
   education: string;
   field_of_study: string | null;

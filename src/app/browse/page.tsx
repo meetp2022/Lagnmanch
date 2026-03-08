@@ -5,7 +5,8 @@ import ProfileCard from "@/components/ProfileCard";
 import { useTranslation } from "@/components/LanguageProvider";
 import type { Profile } from "@/types/profile";
 
-const CITIES = ["All", "Vapi", "Umbergaon", "Pardi", "Daman", "Silvassa", "Mumbai", "Pune"];
+import { DISTRICT_LIST, DISTRICTS } from "@/lib/locations";
+
 
 export default function BrowseProfilesPage() {
   const { t } = useTranslation();
@@ -60,14 +61,15 @@ export default function BrowseProfilesPage() {
             </select>
           </div>
           <div>
-            <label className="block text-xs font-medium text-gray-500 mb-1">{t.browse.city}</label>
+            <label className="block text-xs font-medium text-gray-500 mb-1">{t.browse.district}</label>
             <select
               value={city}
               onChange={(e) => setCity(e.target.value)}
               className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-maroon outline-none"
             >
-              {CITIES.map((c) => (
-                <option key={c} value={c}>{c === "All" ? t.browse.all : c}</option>
+              <option value="">{t.browse.all}</option>
+              {DISTRICT_LIST.filter(d => d !== "Other").map((d) => (
+                <option key={d} value={d}>{d}</option>
               ))}
             </select>
           </div>

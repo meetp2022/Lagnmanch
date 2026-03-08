@@ -2,26 +2,18 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 import { useAuth } from "@/components/AuthProvider";
 import { useTranslation } from "@/components/LanguageProvider";
+import type { Profile } from "@/types/profile";
 
-type Profile = {
-  id: string;
-  full_name: string;
-  gender: string;
-  age: number;
-  city: string;
-  current_location: string;
-  education: string;
-  occupation: string;
-  photo_url: string | null;
-  profile_status: "pending" | "approved" | "rejected";
-  created_at: string;
-};
-
-export default function DashboardPage() {
+function DashboardContent() {
   const { user, signOut } = useAuth();
   const { t } = useTranslation();
+  const searchParams = useSearchParams();
+  const updated = searchParams.get("updated");
+
   const [profile, setProfile] = useState<Profile | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -78,6 +70,13 @@ export default function DashboardPage() {
         </button>
       </div>
 
+      {/* Update success message */}
+      {updated && (
+        <div className="bg-green-50 border border-green-200 text-green-800 px-4 py-3 rounded-lg mb-6 text-sm">
+          {t.dashboard.updateSuccess}
+        </div>
+      )}
+
       {error && (
         <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg mb-6">
           {error}
@@ -107,7 +106,7 @@ export default function DashboardPage() {
       {profile && (
         <div className="bg-white rounded-xl shadow-sm overflow-hidden">
           {/* Status banner */}
-          <div className="bg-cream px-6 py-4 flex items-center justify-between">
+          <div className="bg-cream px-6 py-4 flex flex-wrap items-center justify-between gap-3">
             <div className="flex items-center gap-3">
               <span className={`px-3 py-1 rounded-full text-xs font-semibold ${statusColors[profile.profile_status]}`}>
                 {t.dashboard.status[profile.profile_status]}
@@ -116,6 +115,15 @@ export default function DashboardPage() {
                 {t.dashboard.createdOn} {new Date(profile.created_at).toLocaleDateString()}
               </span>
             </div>
+            <Link
+              href="/edit-profile"
+              className="inline-flex items-center gap-2 text-sm font-medium text-maroon border border-maroon px-4 py-1.5 rounded-lg hover:bg-maroon hover:text-white transition"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+              </svg>
+              {t.dashboard.editProfile}
+            </Link>
           </div>
 
           {/* Profile info */}
@@ -141,7 +149,7 @@ export default function DashboardPage() {
                   {profile.age} {t.common.years} · {profile.gender === "Male" ? t.common.male : t.common.female}
                 </p>
                 <p className="text-gray-500 text-sm mt-1">
-                  {profile.city} · {profile.current_location}
+                  {profile.district && `${profile.district} · `}{profile.city} · {profile.current_location}
                 </p>
               </div>
             </div>
@@ -178,5 +186,13 @@ export default function DashboardPage() {
         </div>
       )}
     </div>
+  );
+}
+
+export default function DashboardPage() {
+  return (
+    <Suspense fallback={<div className="max-w-4xl mx-auto px-4 py-12 text-center text-gray-400">Loading...</div>}>
+      <DashboardContent />
+    </Suspense>
   );
 }
