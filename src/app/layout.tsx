@@ -64,6 +64,9 @@ export const metadata: Metadata = {
     shortcut: "/icon.svg",
   },
   manifest: "/site.webmanifest",
+  verification: {
+    google: "QvGVWsQqjM9dodif5bNp4VOmcj0NfNPgn_p-V5soR0A",
+  },
   appleWebApp: {
     capable: true,
     statusBarStyle: "black-translucent",
