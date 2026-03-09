@@ -284,6 +284,7 @@ export const en = {
     noProfileDesc: "You haven't created a profile yet. Create one to get listed on our platform.",
     createProfile: "Create Your Profile",
     editProfile: "Edit Profile",
+    welcomeMessage: "Welcome to LagnaManch! Your account has been created successfully. Create your profile to get started.",
     updateSuccess: "Your profile has been updated successfully. It will be re-reviewed by our team.",
     createdOn: "Created on",
     pendingMessage: "Your profile is under review. Our team will verify and approve it shortly.",

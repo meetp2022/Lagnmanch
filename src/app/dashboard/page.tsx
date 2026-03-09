@@ -13,6 +13,7 @@ function DashboardContent() {
   const { t } = useTranslation();
   const searchParams = useSearchParams();
   const updated = searchParams.get("updated");
+  const welcome = searchParams.get("welcome");
 
   const [profile, setProfile] = useState<Profile | null>(null);
   const [loading, setLoading] = useState(true);
@@ -69,6 +70,13 @@ function DashboardContent() {
           {t.dashboard.logout}
         </button>
       </div>
+
+      {/* Welcome message for new users */}
+      {welcome && (
+        <div className="bg-green-50 border border-green-200 text-green-800 px-4 py-3 rounded-lg mb-6 text-sm">
+          {t.dashboard.welcomeMessage}
+        </div>
+      )}
 
       {/* Update success message */}
       {updated && (
