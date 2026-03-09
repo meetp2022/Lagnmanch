@@ -41,6 +41,13 @@ export default function RegisterPage() {
       setError(error.message);
       setLoading(false);
     } else {
+      // Fire-and-forget: send welcome email (don't block redirect)
+      fetch("/api/send-welcome-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      }).catch(() => {});
+
       // Registration successful — redirect to dashboard with welcome flag
       router.push("/dashboard?welcome=1");
     }
