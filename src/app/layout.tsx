@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Great_Vibes } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import { LanguageProvider } from "@/components/LanguageProvider";
 import { AuthProvider } from "@/components/AuthProvider";
 import Navbar from "@/components/Navbar";
@@ -93,6 +94,7 @@ export default function RootLayout({
             <Footer />
           </AuthProvider>
         </LanguageProvider>
+        <Analytics />
       </body>
     </html>
   );
