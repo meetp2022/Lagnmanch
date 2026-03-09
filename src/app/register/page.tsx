@@ -13,11 +13,17 @@ export default function RegisterPage() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
+  const [ageConfirmed, setAgeConfirmed] = useState(false);
   const [loading, setLoading] = useState(false);
 
   async function handleRegister(e: React.FormEvent) {
     e.preventDefault();
     setError("");
+
+    if (!ageConfirmed) {
+      setError(t.auth.ageRequired);
+      return;
+    }
 
     if (password !== confirmPassword) {
       setError(t.auth.passwordMismatch);
@@ -112,6 +118,28 @@ export default function RegisterPage() {
                 placeholder="••••••••"
               />
             </div>
+
+            {/* Age confirmation */}
+            <div className="flex items-start gap-2">
+              <input
+                type="checkbox"
+                id="ageConfirm"
+                checked={ageConfirmed}
+                onChange={(e) => setAgeConfirmed(e.target.checked)}
+                className="mt-1 h-4 w-4 accent-maroon"
+              />
+              <label htmlFor="ageConfirm" className="text-sm text-gray-700">
+                {t.auth.ageConfirm}
+              </label>
+            </div>
+
+            {/* Terms agreement */}
+            <p className="text-xs text-gray-500">
+              {t.auth.termsAgree}{" "}
+              <Link href="/terms" className="text-maroon underline">{t.auth.termsLink}</Link>
+              {" "}&amp;{" "}
+              <Link href="/privacy" className="text-maroon underline">{t.auth.privacyLink}</Link>
+            </p>
 
             <button
               type="submit"

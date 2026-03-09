@@ -9,7 +9,7 @@ export default function Footer() {
   return (
     <footer className="bg-maroon-dark text-white mt-auto">
       <div className="max-w-7xl mx-auto px-4 py-10 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
           <div>
             <h3 className="text-xl font-bold mb-3">
               <span className="text-gold">Lagna</span>Manch
@@ -26,6 +26,16 @@ export default function Footer() {
               <li><Link href="/create-profile" className="hover:text-gold transition">{t.footer.createProfile}</Link></li>
               <li><Link href="/about" className="hover:text-gold transition">{t.footer.aboutUs}</Link></li>
               <li><Link href="/contact" className="hover:text-gold transition">{t.footer.contact}</Link></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="font-semibold mb-3 text-gold">{t.footer.trustSafety}</h4>
+            <ul className="space-y-2 text-sm text-gray-300">
+              <li><Link href="/terms" className="hover:text-gold transition">{t.footer.terms}</Link></li>
+              <li><Link href="/privacy" className="hover:text-gold transition">{t.footer.privacy}</Link></li>
+              <li><Link href="/safety" className="hover:text-gold transition">{t.footer.safety}</Link></li>
+              <li><Link href="/report-misuse" className="hover:text-gold transition">{t.footer.reportMisuse}</Link></li>
             </ul>
           </div>
 
