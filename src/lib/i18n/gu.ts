@@ -62,6 +62,9 @@ export const gu = {
     sampleProfilesOverlayTitle: "ખરી પ્રોફાઇલ જોવા રજિસ્ટર કરો",
     sampleProfilesOverlayDesc: "દક્ષિણ ગુજરાતના કોડી પટેલ પરિવારોની ચકાસાયેલ પ્રોફાઇલ જોવા મફત એકાઉન્ટ બનાવો.",
     sampleProfilesCta: "હમણાં રજિસ્ટર કરો",
+    sampleProfilesBrowseTitle: "ખરી પ્રોફાઇલ જુઓ",
+    sampleProfilesBrowseDesc: "દક્ષિણ ગુજરાતના કોડી પટેલ પરિવારોની ચકાસાયેલ પ્રોફાઇલ જુઓ.",
+    sampleProfilesBrowseCta: "પ્રોફાઇલ જુઓ",
     sampleProfilesDisclaimer: "* ઉપર દર્શાવેલ પ્રોફાઇલ ફક્ત નમૂના છે.",
   },
 

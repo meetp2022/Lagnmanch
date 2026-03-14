@@ -110,7 +110,9 @@ export default function SampleProfilesSection() {
   const { t } = useTranslation();
   const { user, loading } = useAuth();
 
-  if (loading || user) return null;
+  if (loading) return null;
+
+  const isLoggedIn = !!user;
 
   return (
     <section className="py-16 bg-cream">
@@ -160,16 +162,22 @@ export default function SampleProfilesSection() {
                 </svg>
               </div>
               <h3 className="text-xl font-bold text-maroon mb-2">
-                {t.home.sampleProfilesOverlayTitle}
+                {isLoggedIn
+                  ? t.home.sampleProfilesBrowseTitle
+                  : t.home.sampleProfilesOverlayTitle}
               </h3>
               <p className="text-gray-600 mb-6">
-                {t.home.sampleProfilesOverlayDesc}
+                {isLoggedIn
+                  ? t.home.sampleProfilesBrowseDesc
+                  : t.home.sampleProfilesOverlayDesc}
               </p>
               <Link
-                href="/register"
+                href={isLoggedIn ? "/browse" : "/register"}
                 className="bg-gold text-maroon px-8 py-3 rounded-lg text-lg font-bold hover:bg-yellow-400 transition shadow-lg shadow-gold/20 inline-block"
               >
-                {t.home.sampleProfilesCta}
+                {isLoggedIn
+                  ? t.home.sampleProfilesBrowseCta
+                  : t.home.sampleProfilesCta}
               </Link>
               <p className="text-xs text-gray-400 mt-3">
                 {t.home.sampleProfilesDisclaimer}

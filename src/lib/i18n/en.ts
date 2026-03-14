@@ -62,6 +62,9 @@ export const en = {
     sampleProfilesOverlayTitle: "Register to Browse Real Profiles",
     sampleProfilesOverlayDesc: "Create your free account to view verified profiles from Kodi Patel families across South Gujarat.",
     sampleProfilesCta: "Register Now",
+    sampleProfilesBrowseTitle: "Browse Real Profiles",
+    sampleProfilesBrowseDesc: "View verified profiles from Kodi Patel families across South Gujarat.",
+    sampleProfilesBrowseCta: "Browse Profiles",
     sampleProfilesDisclaimer: "* Profiles shown above are illustrative samples only.",
   },
 
