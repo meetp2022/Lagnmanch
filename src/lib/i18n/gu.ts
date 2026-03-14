@@ -57,6 +57,12 @@ export const gu = {
     ctaTitle: "કોડી પટેલ સમાજના સભ્ય દ્વારા, કોડી પટેલ પરિવારો માટે બનાવેલ",
     ctaDescription: "યોગ્ય જોડી શોધવા માટે લગ્નામંચ પર વિશ્વાસ કરતા પરિવારોની સંખ્યામાં જોડાઓ.",
     ctaButton: "આજે જ તમારી પ્રોફાઇલ બનાવો",
+    sampleProfilesTitle: "ફીચર્ડ પ્રોફાઇલ",
+    sampleProfilesSubtitle: "લગ્નામંચ પર તમને મળશે એવી પ્રોફાઇલની ઝલક.",
+    sampleProfilesOverlayTitle: "ખરી પ્રોફાઇલ જોવા રજિસ્ટર કરો",
+    sampleProfilesOverlayDesc: "દક્ષિણ ગુજરાતના કોડી પટેલ પરિવારોની ચકાસાયેલ પ્રોફાઇલ જોવા મફત એકાઉન્ટ બનાવો.",
+    sampleProfilesCta: "હમણાં રજિસ્ટર કરો",
+    sampleProfilesDisclaimer: "* ઉપર દર્શાવેલ પ્રોફાઇલ ફક્ત નમૂના છે.",
   },
 
   // Browse Page

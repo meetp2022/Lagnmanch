@@ -57,6 +57,12 @@ export const en = {
     ctaTitle: "Built by a member of the Kodi Patel community, for Kodi Patel families",
     ctaDescription: "Join the growing number of families who trust LagnaManch for finding the right match.",
     ctaButton: "Create Your Profile Today",
+    sampleProfilesTitle: "Featured Profiles",
+    sampleProfilesSubtitle: "Here's a glimpse of the kind of profiles you'll find on LagnaManch.",
+    sampleProfilesOverlayTitle: "Register to Browse Real Profiles",
+    sampleProfilesOverlayDesc: "Create your free account to view verified profiles from Kodi Patel families across South Gujarat.",
+    sampleProfilesCta: "Register Now",
+    sampleProfilesDisclaimer: "* Profiles shown above are illustrative samples only.",
   },
 
   // Browse Page

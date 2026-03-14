@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useTranslation } from "@/components/LanguageProvider";
 import { MandapIcon } from "@/components/LagnaManchLogo";
+import SampleProfilesSection from "@/components/SampleProfilesSection";
 
 export default function HomePage() {
   const { t } = useTranslation();
@@ -155,6 +156,9 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* Sample Profiles */}
+      <SampleProfilesSection />
 
       {/* CTA */}
       <section className="py-16 bg-maroon text-white text-center">
