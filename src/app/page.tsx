@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useTranslation } from "@/components/LanguageProvider";
 import { MandapIcon } from "@/components/LagnaManchLogo";
 import SampleProfilesSection from "@/components/SampleProfilesSection";
+import ParticleNetwork from "@/components/ParticleNetwork";
 
 export default function HomePage() {
   const { t } = useTranslation();
@@ -19,11 +20,8 @@ export default function HomePage() {
     <>
       {/* Hero Section */}
       <section className="bg-maroon text-white relative overflow-hidden">
-        {/* Subtle decorative background pattern */}
-        <div className="absolute inset-0 opacity-[0.04]" style={{
-          backgroundImage: `radial-gradient(circle at 25% 25%, #CDA144 1px, transparent 1px), radial-gradient(circle at 75% 75%, #CDA144 1px, transparent 1px)`,
-          backgroundSize: '60px 60px',
-        }} />
+        {/* Interactive particle network background */}
+        <ParticleNetwork className="absolute inset-0" />
 
         <div className="max-w-7xl mx-auto px-4 py-16 sm:py-24 relative z-10">
           <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">

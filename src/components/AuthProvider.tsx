@@ -32,6 +32,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     const supabase = getSupabase();
 
+    // Skip auth when Supabase is not configured (local dev without env vars)
+    if (!supabase) {
+      setLoading(false);
+      return;
+    }
+
     // Get initial session
     const getUser = async () => {
       const {
@@ -55,7 +61,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const signOut = useCallback(async () => {
     const supabase = getSupabase();
-    await supabase.auth.signOut();
+    if (supabase) await supabase.auth.signOut();
     setUser(null);
     window.location.href = "/";
   }, []);
