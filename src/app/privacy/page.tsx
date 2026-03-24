@@ -52,6 +52,37 @@ export default function PrivacyPage() {
         </section>
 
         <section>
+          <h2 className="text-xl font-semibold text-maroon mb-3">{t.privacy.thirdPartyTitle}</h2>
+          <p className="mb-3">{t.privacy.thirdPartyDesc}</p>
+          <ul className="list-disc list-inside space-y-2">
+            <li>{t.privacy.thirdParty1}</li>
+            <li>{t.privacy.thirdParty2}</li>
+            <li>{t.privacy.thirdParty3}</li>
+            <li>{t.privacy.thirdParty4}</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 className="text-xl font-semibold text-maroon mb-3">{t.privacy.cookiesTitle}</h2>
+          <p>{t.privacy.cookiesDesc}</p>
+        </section>
+
+        <section>
+          <h2 className="text-xl font-semibold text-maroon mb-3">{t.privacy.childrenTitle}</h2>
+          <p>{t.privacy.childrenDesc}</p>
+        </section>
+
+        <section>
+          <h2 className="text-xl font-semibold text-maroon mb-3">{t.privacy.retentionTitle}</h2>
+          <p>{t.privacy.retentionDesc}</p>
+        </section>
+
+        <section>
+          <h2 className="text-xl font-semibold text-maroon mb-3">{t.privacy.changesTitle}</h2>
+          <p>{t.privacy.changesDesc}</p>
+        </section>
+
+        <section>
           <h2 className="text-xl font-semibold text-maroon mb-3">{t.privacy.contactTitle}</h2>
           <p>{t.privacy.contactDesc}</p>
         </section>

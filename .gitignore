@@ -39,3 +39,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Android signing (NEVER commit these)
+*.keystore
+*.jks
+android/keystore.properties
+android/local.properties
