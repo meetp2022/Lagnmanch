@@ -5,6 +5,8 @@ import { LanguageProvider } from "@/components/LanguageProvider";
 import { AuthProvider } from "@/components/AuthProvider";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import BottomNav from "@/components/BottomNav";
+import { ToastProvider } from "@/components/ToastProvider";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -77,6 +79,7 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: "#800020",
+  viewportFit: "cover",
 };
 
 export default function RootLayout({
@@ -89,9 +92,12 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${greatVibes.variable} antialiased flex flex-col min-h-screen`}>
         <LanguageProvider>
           <AuthProvider>
-            <Navbar />
-            <main className="flex-1">{children}</main>
-            <Footer />
+            <ToastProvider>
+              <Navbar />
+              <main className="flex-1 pb-16 md:pb-0">{children}</main>
+              <Footer />
+              <BottomNav />
+            </ToastProvider>
           </AuthProvider>
         </LanguageProvider>
         <Analytics />

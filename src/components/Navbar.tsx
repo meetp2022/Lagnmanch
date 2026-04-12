@@ -12,14 +12,14 @@ export default function Navbar() {
   const { user, loading, signOut } = useAuth();
 
   return (
-    <nav className="bg-maroon text-white shadow-md sticky top-0 z-50">
+    <nav className="bg-maroon text-white shadow-md sticky top-0 z-50 pt-[env(safe-area-inset-top)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex justify-between items-center h-14 md:h-16">
 
           {/* Logo: mandap icon + brand name */}
           <Link href="/" className="flex items-center gap-2 group">
-            <AppIcon size={40} />
-            <span className="text-xl font-bold tracking-tight leading-none">
+            <AppIcon size={36} />
+            <span className="text-lg md:text-xl font-bold tracking-tight leading-none">
               <span className="text-gold">Lagna</span>Manch
             </span>
           </Link>
@@ -80,82 +80,19 @@ export default function Navbar() {
             )}
           </div>
 
-          {/* Mobile: lang toggle + hamburger */}
-          <div className="flex items-center gap-3 md:hidden">
+          {/* Mobile: language toggle only (nav is handled by BottomNav) */}
+          <div className="flex items-center gap-2 md:hidden">
             <button
               onClick={toggleLanguage}
-              className="flex items-center gap-1 bg-gold/20 border border-gold/40 rounded-full px-2.5 py-1 text-xs font-medium hover:bg-gold/30 transition"
+              className="flex items-center gap-1 bg-gold/20 border border-gold/40 rounded-full px-3 py-1.5 text-xs font-medium hover:bg-gold/30 transition min-h-[36px]"
               aria-label="Toggle language"
             >
               <span className={locale === "en" ? "text-gold font-bold" : "text-white/60"}>EN</span>
               <span className="text-white/40">|</span>
               <span className={locale === "gu" ? "text-gold font-bold" : "text-white/60"}>ગુજ</span>
             </button>
-
-            <button
-              onClick={() => setMenuOpen(!menuOpen)}
-              className="p-2"
-              aria-label={t.nav.toggleMenu}
-            >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                {menuOpen ? (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                ) : (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                )}
-              </svg>
-            </button>
           </div>
         </div>
-
-        {/* Mobile menu */}
-        {menuOpen && (
-          <div className="md:hidden pb-4 space-y-2 border-t border-white/10 pt-3">
-            <Link href="/" onClick={() => setMenuOpen(false)} className="block py-2 hover:text-gold">{t.nav.home}</Link>
-            <Link href="/browse" onClick={() => setMenuOpen(false)} className="block py-2 hover:text-gold">{t.nav.browse}</Link>
-            <Link href="/about" onClick={() => setMenuOpen(false)} className="block py-2 hover:text-gold">{t.nav.about}</Link>
-            <Link href="/contact" onClick={() => setMenuOpen(false)} className="block py-2 hover:text-gold">{t.nav.contact}</Link>
-
-            {!loading && (
-              <>
-                {user ? (
-                  <>
-                    <Link
-                      href="/dashboard"
-                      onClick={() => setMenuOpen(false)}
-                      className="block py-2 hover:text-gold font-medium"
-                    >
-                      {t.nav.dashboard}
-                    </Link>
-                    <button
-                      onClick={() => { setMenuOpen(false); signOut(); }}
-                      className="block py-2 text-white/70 hover:text-gold w-full text-left"
-                    >
-                      {t.nav.logout}
-                    </button>
-                  </>
-                ) : (
-                  <>
-                    <Link
-                      href="/login"
-                      onClick={() => setMenuOpen(false)}
-                      className="block py-2 hover:text-gold font-medium"
-                    >
-                      {t.nav.login}
-                    </Link>
-                    <Link
-                      href="/register"
-                      onClick={() => setMenuOpen(false)}
-                      className="block bg-gold text-maroon px-4 py-2 rounded-lg font-semibold text-center hover:bg-yellow-400"
-                    >
-                      {t.nav.register}
-                    </Link>
-                  </>
-                )}
-              </>
-            )}
-          </div>
-        )}
       </div>
     </nav>
   );

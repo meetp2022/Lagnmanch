@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import ProfileCard from "@/components/ProfileCard";
+import SkeletonCard from "@/components/SkeletonCard";
 import { useTranslation } from "@/components/LanguageProvider";
 import type { Profile } from "@/types/profile";
 
@@ -102,9 +103,10 @@ export default function BrowseProfilesPage() {
 
       {/* Results */}
       {loading ? (
-        <div className="text-center py-20">
-          <div className="inline-block w-8 h-8 border-4 border-maroon border-t-transparent rounded-full animate-spin" />
-          <p className="mt-4 text-gray-500">{t.browse.loading}</p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          {Array.from({ length: 8 }).map((_, i) => (
+            <SkeletonCard key={i} />
+          ))}
         </div>
       ) : profiles.length === 0 ? (
         <div className="text-center py-20">
