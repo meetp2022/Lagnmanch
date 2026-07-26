@@ -7,8 +7,9 @@ export default function Footer() {
   const { t } = useTranslation();
 
   return (
-    <footer className="hidden md:block bg-maroon-dark text-white mt-auto">
-      <div className="max-w-7xl mx-auto px-4 py-10 sm:px-6 lg:px-8">
+    <footer className="bg-maroon-dark text-white mt-auto">
+      {/* Desktop footer */}
+      <div className="hidden md:block max-w-7xl mx-auto px-4 py-10 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
           <div>
             <h3 className="text-xl font-bold mb-3">
@@ -50,6 +51,21 @@ export default function Footer() {
         <div className="border-t border-gray-600 mt-8 pt-6 text-center text-sm text-gray-400">
           &copy; {new Date().getFullYear()} {t.footer.copyright}
         </div>
+      </div>
+
+      {/* Mobile footer — compact legal links */}
+      <div className="md:hidden px-4 py-6 pb-20">
+        <div className="flex flex-wrap justify-center gap-x-4 gap-y-2 text-xs text-gray-400">
+          <Link href="/terms" className="hover:text-gold transition">{t.footer.terms}</Link>
+          <Link href="/privacy" className="hover:text-gold transition">{t.footer.privacy}</Link>
+          <Link href="/safety" className="hover:text-gold transition">{t.footer.safety}</Link>
+          <Link href="/report-misuse" className="hover:text-gold transition">{t.footer.reportMisuse}</Link>
+          <Link href="/about" className="hover:text-gold transition">{t.footer.aboutUs}</Link>
+          <Link href="/contact" className="hover:text-gold transition">{t.footer.contact}</Link>
+        </div>
+        <p className="text-center text-xs text-gray-500 mt-3">
+          &copy; {new Date().getFullYear()} {t.footer.copyright}
+        </p>
       </div>
     </footer>
   );

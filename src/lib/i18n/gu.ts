@@ -232,6 +232,10 @@ export const gu = {
     emailLabel: "ઈમેલ",
     message: "સંદેશ",
     sendButton: "સંદેશ મોકલો",
+    sending: "મોકલી રહ્યા છીએ...",
+    messageSent: "સંદેશ મોકલાયો!",
+    messageSentDesc: "અમે ટૂંક સમયમાં તમારો સંપર્ક કરીશું.",
+    sendAnother: "બીજો સંદેશ મોકલો",
   },
 
   // Admin Page

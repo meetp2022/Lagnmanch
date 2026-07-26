@@ -1,9 +1,44 @@
 "use client";
 
+import { useState } from "react";
 import { useTranslation } from "@/components/LanguageProvider";
 
 export default function ContactPage() {
   const { t } = useTranslation();
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [sending, setSending] = useState(false);
+  const [sent, setSent] = useState(false);
+  const [error, setError] = useState("");
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    setError("");
+    setSending(true);
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, message }),
+      });
+
+      if (!res.ok) {
+        const data = await res.json();
+        throw new Error(data.error || "Failed to send");
+      }
+
+      setSent(true);
+      setName("");
+      setEmail("");
+      setMessage("");
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Failed to send message");
+    } finally {
+      setSending(false);
+    }
+  }
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-16">
@@ -40,35 +75,67 @@ export default function ContactPage() {
 
         <div className="bg-white rounded-xl shadow-sm p-8">
           <h2 className="text-xl font-semibold text-maroon mb-4">{t.contact.sendMessage}</h2>
-          <form className="space-y-4">
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">{t.contact.name}</label>
-              <input
-                type="text"
-                className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-maroon focus:border-maroon outline-none"
-              />
+
+          {sent ? (
+            <div className="bg-green-50 border border-green-200 text-green-800 px-4 py-6 rounded-lg text-center">
+              <svg className="w-10 h-10 text-green-500 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <p className="font-semibold">{t.contact.messageSent}</p>
+              <p className="text-sm mt-1">{t.contact.messageSentDesc}</p>
+              <button
+                onClick={() => setSent(false)}
+                className="mt-4 text-sm text-maroon font-medium hover:underline"
+              >
+                {t.contact.sendAnother}
+              </button>
             </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">{t.contact.emailLabel}</label>
-              <input
-                type="email"
-                className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-maroon focus:border-maroon outline-none"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">{t.contact.message}</label>
-              <textarea
-                rows={4}
-                className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-maroon focus:border-maroon outline-none"
-              />
-            </div>
-            <button
-              type="submit"
-              className="w-full bg-maroon text-white py-2 rounded-lg font-semibold hover:bg-maroon-dark transition"
-            >
-              {t.contact.sendButton}
-            </button>
-          </form>
+          ) : (
+            <form onSubmit={handleSubmit} className="space-y-4">
+              {error && (
+                <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm">
+                  {error}
+                </div>
+              )}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">{t.contact.name}</label>
+                <input
+                  type="text"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  required
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-maroon focus:border-maroon outline-none"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">{t.contact.emailLabel}</label>
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-maroon focus:border-maroon outline-none"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">{t.contact.message}</label>
+                <textarea
+                  rows={4}
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                  required
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-maroon focus:border-maroon outline-none"
+                />
+              </div>
+              <button
+                type="submit"
+                disabled={sending}
+                className="w-full bg-maroon text-white py-2 rounded-lg font-semibold hover:bg-maroon-dark transition disabled:opacity-50"
+              >
+                {sending ? t.contact.sending : t.contact.sendButton}
+              </button>
+            </form>
+          )}
         </div>
       </div>
     </div>

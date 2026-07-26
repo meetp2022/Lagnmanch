@@ -232,6 +232,10 @@ export const en = {
     emailLabel: "Email",
     message: "Message",
     sendButton: "Send Message",
+    sending: "Sending...",
+    messageSent: "Message Sent!",
+    messageSentDesc: "We'll get back to you soon.",
+    sendAnother: "Send another message",
   },
 
   // Admin Page

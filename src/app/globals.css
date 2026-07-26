@@ -97,6 +97,61 @@ html.dark .bg-cream {
   background-color: #1a1a2e;
 }
 
+/* Bottom nav dark mode */
+html.dark nav.fixed.bg-white {
+  background-color: #16213e;
+  border-color: #2a2a4a;
+}
+
+/* Alert banners dark mode */
+html.dark .bg-green-50 {
+  background-color: #0d2818;
+  border-color: #1a5c30;
+  color: #86efac;
+}
+html.dark .bg-green-100 {
+  background-color: #0d2818;
+}
+html.dark .text-green-800 {
+  color: #86efac;
+}
+
+html.dark .bg-yellow-50 {
+  background-color: #2d2506;
+  border-color: #5c4a0e;
+  color: #fde68a;
+}
+html.dark .bg-yellow-100 {
+  background-color: #2d2506;
+}
+html.dark .text-yellow-800 {
+  color: #fde68a;
+}
+
+html.dark .bg-red-50 {
+  background-color: #2d0a0a;
+  border-color: #5c1a1a;
+  color: #fca5a5;
+}
+html.dark .text-red-700 {
+  color: #fca5a5;
+}
+
+/* Maroon backgrounds in dark mode — slightly lighten for contrast */
+html.dark .bg-maroon\/10 {
+  background-color: rgba(128, 0, 32, 0.2);
+}
+
+/* How-it-works section */
+html.dark section.bg-white {
+  background-color: #16213e;
+}
+
+/* Checkbox dark mode */
+html.dark input[type="checkbox"] {
+  accent-color: #800020;
+}
+
 /* Page transition animation */
 @keyframes fadeInUp {
   from {
@@ -127,6 +182,11 @@ html.dark .bg-cream {
   background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
   background-size: 200% 100%;
   animation: shimmer 1.5s ease-in-out infinite;
+}
+
+html.dark .animate-shimmer {
+  background: linear-gradient(90deg, #1e2a45 25%, #2a3a5c 50%, #1e2a45 75%);
+  background-size: 200% 100%;
 }
 
 /* Toast animations */

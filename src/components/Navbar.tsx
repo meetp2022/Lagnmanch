@@ -2,13 +2,20 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import { useTranslation } from "@/components/LanguageProvider";
 import { useAuth } from "@/components/AuthProvider";
 import { AppIcon } from "@/components/LagnaManchLogo";
 import ThemeToggle from "@/components/ThemeToggle";
 
+function navLinkClass(pathname: string, href: string) {
+  const isActive = href === "/" ? pathname === "/" : pathname.startsWith(href);
+  return `transition text-sm ${isActive ? "text-gold font-semibold" : "hover:text-gold"}`;
+}
+
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
   const { locale, toggleLanguage, t } = useTranslation();
   const { user, loading, signOut } = useAuth();
 
@@ -27,10 +34,10 @@ export default function Navbar() {
 
           {/* Desktop nav */}
           <div className="hidden md:flex items-center gap-6">
-            <Link href="/" className="hover:text-gold transition text-sm">{t.nav.home}</Link>
-            <Link href="/browse" className="hover:text-gold transition text-sm">{t.nav.browse}</Link>
-            <Link href="/about" className="hover:text-gold transition text-sm">{t.nav.about}</Link>
-            <Link href="/contact" className="hover:text-gold transition text-sm">{t.nav.contact}</Link>
+            <Link href="/" className={navLinkClass(pathname, "/")}>{t.nav.home}</Link>
+            <Link href="/browse" className={navLinkClass(pathname, "/browse")}>{t.nav.browse}</Link>
+            <Link href="/about" className={navLinkClass(pathname, "/about")}>{t.nav.about}</Link>
+            <Link href="/contact" className={navLinkClass(pathname, "/contact")}>{t.nav.contact}</Link>
 
             {/* Language Toggle */}
             <button
