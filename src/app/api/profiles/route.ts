@@ -15,12 +15,16 @@ export async function GET(request: NextRequest) {
   const education = searchParams.get("education");
   const ageMin = searchParams.get("age_min");
   const ageMax = searchParams.get("age_max");
+  const page = parseInt(searchParams.get("page") || "1");
+  const limit = Math.min(parseInt(searchParams.get("limit") || "20"), 50);
+  const offset = (page - 1) * limit;
 
   let query = supabase
     .from("profiles")
-    .select("*")
+    .select("*", { count: "exact" })
     .eq("profile_status", status)
-    .order("created_at", { ascending: false });
+    .order("created_at", { ascending: false })
+    .range(offset, offset + limit - 1);
 
   if (gender) query = query.eq("gender", gender);
   if (city) query = query.ilike("city", `%${city}%`);
@@ -28,13 +32,19 @@ export async function GET(request: NextRequest) {
   if (ageMin) query = query.gte("age", parseInt(ageMin));
   if (ageMax) query = query.lte("age", parseInt(ageMax));
 
-  const { data, error } = await query;
+  const { data, error, count } = await query;
 
   if (error) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
 
-  return NextResponse.json(data);
+  return NextResponse.json({
+    profiles: data,
+    total: count ?? 0,
+    page,
+    limit,
+    hasMore: offset + limit < (count ?? 0),
+  });
 }
 
 // POST /api/profiles — create a new profile (requires auth)
@@ -105,6 +115,7 @@ export async function POST(request: NextRequest) {
       preferred_education: body.preferred_education || null,
       phone_number: body.phone_number,
       whatsapp_number: body.whatsapp_number || null,
+      hide_contact: body.hide_contact ?? false,
       photo_url: body.photo_url || null,
       profile_status: "pending" as const,
     };

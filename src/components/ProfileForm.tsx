@@ -25,6 +25,9 @@ export default function ProfileForm({ initialData, onSubmit, submitLabel, submit
   const [photoFile, setPhotoFile] = useState<File | null>(null);
   const [photoPreview, setPhotoPreview] = useState<string | null>(initialData?.photo_url || null);
 
+  // Contact visibility
+  const [hideContact, setHideContact] = useState(initialData?.hide_contact ?? false);
+
   // Location state
   const [district, setDistrict] = useState(initialData?.district || "");
   const [taluka, setTaluka] = useState(initialData?.taluka || initialData?.city || "");
@@ -112,6 +115,7 @@ export default function ProfileForm({ initialData, onSubmit, submitLabel, submit
         preferred_education: formData.get("preferred_education"),
         phone_number: formData.get("phone_number"),
         whatsapp_number: formData.get("whatsapp_number"),
+        hide_contact: hideContact,
       };
 
       await onSubmit(profileData, photoFile);
@@ -335,6 +339,21 @@ export default function ProfileForm({ initialData, onSubmit, submitLabel, submit
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">{t.form.whatsappNumber}</label>
               <input name="whatsapp_number" type="tel" defaultValue={initialData?.whatsapp_number || ""} className={inputClass} />
+            </div>
+          </div>
+          <div className="mt-4 flex items-start gap-3 p-3 bg-cream rounded-lg border border-gold/20">
+            <input
+              type="checkbox"
+              id="hideContact"
+              checked={hideContact}
+              onChange={(e) => setHideContact(e.target.checked)}
+              className="mt-0.5 h-4 w-4 accent-maroon"
+            />
+            <div>
+              <label htmlFor="hideContact" className="text-sm font-medium text-gray-700 cursor-pointer">
+                {t.form.hideContactLabel}
+              </label>
+              <p className="text-xs text-gray-500 mt-0.5">{t.form.hideContactHint}</p>
             </div>
           </div>
         </fieldset>

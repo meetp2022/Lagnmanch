@@ -87,6 +87,7 @@ export async function PUT(request: NextRequest) {
       preferred_education: body.preferred_education || null,
       phone_number: body.phone_number,
       whatsapp_number: body.whatsapp_number || null,
+      hide_contact: body.hide_contact ?? false,
       photo_url: body.photo_url || null,
       profile_status: "pending" as const, // Re-review after edit
     };

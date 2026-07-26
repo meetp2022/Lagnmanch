@@ -1,9 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import ProfileCard from "@/components/ProfileCard";
 import SkeletonCard from "@/components/SkeletonCard";
 import { useTranslation } from "@/components/LanguageProvider";
+import { useAuth } from "@/components/AuthProvider";
 import type { Profile } from "@/types/profile";
 
 import { DISTRICT_LIST, DISTRICTS } from "@/lib/locations";
@@ -11,34 +12,68 @@ import { DISTRICT_LIST, DISTRICTS } from "@/lib/locations";
 
 export default function BrowseProfilesPage() {
   const { t } = useTranslation();
+  const { user } = useAuth();
   const [profiles, setProfiles] = useState<Profile[]>([]);
   const [loading, setLoading] = useState(true);
+  const [loadingMore, setLoadingMore] = useState(false);
   const [gender, setGender] = useState("");
   const [city, setCity] = useState("");
   const [ageMin, setAgeMin] = useState("");
   const [ageMax, setAgeMax] = useState("");
+  const [page, setPage] = useState(1);
+  const [hasMore, setHasMore] = useState(false);
+  const [total, setTotal] = useState(0);
+  const blockedIdsRef = useRef<Set<string>>(new Set());
 
   useEffect(() => {
-    fetchProfiles();
+    if (user) {
+      fetch("/api/block")
+        .then((res) => res.json())
+        .then((ids: string[]) => {
+          blockedIdsRef.current = new Set(ids);
+        })
+        .catch(() => {});
+    }
+  }, [user]);
+
+  useEffect(() => {
+    setPage(1);
+    setProfiles([]);
+    fetchProfiles(1, true);
   }, [gender, city, ageMin, ageMax]);
 
-  async function fetchProfiles() {
-    setLoading(true);
+  async function fetchProfiles(pageNum: number, reset = false) {
+    if (reset) setLoading(true);
+    else setLoadingMore(true);
+
     const params = new URLSearchParams();
     if (gender) params.set("gender", gender);
     if (city && city !== "All") params.set("city", city);
     if (ageMin) params.set("age_min", ageMin);
     if (ageMax) params.set("age_max", ageMax);
+    params.set("page", pageNum.toString());
+    params.set("limit", "20");
 
     try {
       const res = await fetch(`/api/profiles?${params.toString()}`);
       const data = await res.json();
-      setProfiles(Array.isArray(data) ? data : []);
+      const newProfiles: Profile[] = Array.isArray(data.profiles) ? data.profiles : (Array.isArray(data) ? data : []);
+      const filtered = newProfiles.filter((p) => !blockedIdsRef.current.has(p.user_id));
+      setProfiles((prev) => reset ? filtered : [...prev, ...filtered]);
+      setHasMore(data.hasMore ?? false);
+      setTotal(data.total ?? filtered.length);
     } catch {
-      setProfiles([]);
+      if (reset) setProfiles([]);
     } finally {
       setLoading(false);
+      setLoadingMore(false);
     }
+  }
+
+  function loadMore() {
+    const nextPage = page + 1;
+    setPage(nextPage);
+    fetchProfiles(nextPage, false);
   }
 
   return (
@@ -115,12 +150,23 @@ export default function BrowseProfilesPage() {
         </div>
       ) : (
         <>
-          <p className="text-sm text-gray-500 mb-4">{profiles.length} {t.browse.profilesFound}</p>
+          <p className="text-sm text-gray-500 mb-4">{total} {t.browse.profilesFound}</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {profiles.map((profile) => (
               <ProfileCard key={profile.id} profile={profile} />
             ))}
           </div>
+          {hasMore && (
+            <div className="text-center mt-8">
+              <button
+                onClick={loadMore}
+                disabled={loadingMore}
+                className="bg-maroon text-white px-6 py-2.5 rounded-lg font-semibold hover:bg-maroon-dark transition disabled:opacity-50"
+              >
+                {loadingMore ? t.browse.loading : t.browse.loadMore}
+              </button>
+            </div>
+          )}
         </>
       )}
     </div>

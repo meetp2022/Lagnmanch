@@ -4,14 +4,18 @@ import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
 import { useTranslation } from "@/components/LanguageProvider";
+import { useAuth } from "@/components/AuthProvider";
 import type { Profile } from "@/types/profile";
 
 export default function ProfileDetailPage() {
   const params = useParams();
   const { t } = useTranslation();
+  const { user } = useAuth();
   const [profile, setProfile] = useState<Profile | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [blocked, setBlocked] = useState(false);
+  const [blockLoading, setBlockLoading] = useState(false);
 
   useEffect(() => {
     async function fetchProfile() {
@@ -20,6 +24,14 @@ export default function ProfileDetailPage() {
         if (!res.ok) throw new Error("Profile not found");
         const data = await res.json();
         setProfile(data);
+
+        if (user && data.user_id !== user.id) {
+          const blockRes = await fetch("/api/block");
+          if (blockRes.ok) {
+            const blockedIds: string[] = await blockRes.json();
+            setBlocked(blockedIds.includes(data.user_id));
+          }
+        }
       } catch {
         setError(t.profile.notFoundOrUnavailable);
       } finally {
@@ -27,7 +39,7 @@ export default function ProfileDetailPage() {
       }
     }
     fetchProfile();
-  }, [params.id]);
+  }, [params.id, user]);
 
   if (loading) {
     return (
@@ -75,10 +87,36 @@ export default function ProfileDetailPage() {
 
           {/* Details */}
           <div className="md:w-2/3 p-6 md:p-8">
-            <h1 className="text-2xl font-bold text-maroon mb-1">{profile.full_name}</h1>
-            <p className="text-gray-500 mb-6">
-              {profile.age} {t.common.years} &middot; {profile.gender === "Male" ? t.common.male : t.common.female} &middot; {profile.city}
-            </p>
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <h1 className="text-2xl font-bold text-maroon mb-1">{profile.full_name}</h1>
+                <p className="text-gray-500 mb-6">
+                  {profile.age} {t.common.years} &middot; {profile.gender === "Male" ? t.common.male : t.common.female} &middot; {profile.city}
+                </p>
+              </div>
+              {user && user.id !== profile.user_id && (
+                <button
+                  onClick={async () => {
+                    setBlockLoading(true);
+                    await fetch("/api/block", {
+                      method: blocked ? "DELETE" : "POST",
+                      headers: { "Content-Type": "application/json" },
+                      body: JSON.stringify({ blocked_id: profile.user_id }),
+                    });
+                    setBlocked(!blocked);
+                    setBlockLoading(false);
+                  }}
+                  disabled={blockLoading}
+                  className={`text-xs px-3 py-1.5 rounded-lg border transition shrink-0 ${
+                    blocked
+                      ? "border-gray-300 text-gray-600 hover:bg-gray-50"
+                      : "border-red-200 text-red-600 hover:bg-red-50"
+                  } disabled:opacity-50`}
+                >
+                  {blockLoading ? "..." : blocked ? t.profile.unblock : t.profile.block}
+                </button>
+              )}
+            </div>
 
             <div className="space-y-6">
               <Section title={t.profile.educationCareer}>
@@ -111,8 +149,14 @@ export default function ProfileDetailPage() {
               </Section>
 
               <Section title={t.profile.contactInfo}>
-                <Detail label={t.profile.phone} value={profile.phone_number} />
-                <Detail label={t.profile.whatsapp} value={profile.whatsapp_number} />
+                {profile.hide_contact && user?.id !== profile.user_id ? (
+                  <p className="text-sm text-gray-500 col-span-2">{t.profile.contactHidden}</p>
+                ) : (
+                  <>
+                    <Detail label={t.profile.phone} value={profile.phone_number} />
+                    <Detail label={t.profile.whatsapp} value={profile.whatsapp_number} />
+                  </>
+                )}
               </Section>
             </div>
           </div>

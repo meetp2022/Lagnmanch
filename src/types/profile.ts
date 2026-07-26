@@ -2,6 +2,7 @@ export type ProfileStatus = "pending" | "approved" | "rejected";
 
 export interface Profile {
   id: string;
+  user_id: string;
   full_name: string;
   gender: "Male" | "Female";
   date_of_birth: string;
@@ -27,6 +28,7 @@ export interface Profile {
   preferred_education: string | null;
   phone_number: string;
   whatsapp_number: string | null;
+  hide_contact: boolean;
   photo_url: string | null;
   profile_status: ProfileStatus;
   created_at: string;
