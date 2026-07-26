@@ -190,6 +190,30 @@ function DashboardContent() {
                 {t.dashboard.approvedMessage}
               </div>
             )}
+
+            {/* Hide profile toggle */}
+            <div className="mt-6 pt-6 border-t border-gray-100">
+              <label className="flex items-center justify-between cursor-pointer">
+                <div>
+                  <p className="text-sm font-medium text-gray-800">{t.dashboard.hideProfileLabel}</p>
+                  <p className="text-xs text-gray-500 mt-0.5">{t.dashboard.hideProfileHint}</p>
+                </div>
+                <input
+                  type="checkbox"
+                  checked={profile.hide_profile}
+                  onChange={async (e) => {
+                    const hide = e.target.checked;
+                    setProfile({ ...profile, hide_profile: hide });
+                    await fetch("/api/profiles/me/visibility", {
+                      method: "PATCH",
+                      headers: { "Content-Type": "application/json" },
+                      body: JSON.stringify({ hide_profile: hide }),
+                    });
+                  }}
+                  className="w-5 h-5 accent-maroon rounded"
+                />
+              </label>
+            </div>
           </div>
         </div>
       )}

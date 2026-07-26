@@ -13,6 +13,8 @@ export async function GET(request: NextRequest) {
   const gender = searchParams.get("gender");
   const city = searchParams.get("city");
   const education = searchParams.get("education");
+  const occupation = searchParams.get("occupation");
+  const income = searchParams.get("income");
   const ageMin = searchParams.get("age_min");
   const ageMax = searchParams.get("age_max");
   const page = parseInt(searchParams.get("page") || "1");
@@ -23,12 +25,15 @@ export async function GET(request: NextRequest) {
     .from("profiles")
     .select("*", { count: "exact" })
     .eq("profile_status", status)
+    .eq("hide_profile", false)
     .order("created_at", { ascending: false })
     .range(offset, offset + limit - 1);
 
   if (gender) query = query.eq("gender", gender);
   if (city) query = query.ilike("city", `%${city}%`);
-  if (education) query = query.ilike("education", `%${education}%`);
+  if (education) query = query.eq("education", education);
+  if (occupation) query = query.ilike("occupation", `%${occupation}%`);
+  if (income) query = query.eq("annual_income", income);
   if (ageMin) query = query.gte("age", parseInt(ageMin));
   if (ageMax) query = query.lte("age", parseInt(ageMax));
 
@@ -116,6 +121,7 @@ export async function POST(request: NextRequest) {
       phone_number: body.phone_number,
       whatsapp_number: body.whatsapp_number || null,
       hide_contact: body.hide_contact ?? false,
+      hide_profile: body.hide_profile ?? false,
       photo_url: body.photo_url || null,
       profile_status: "pending" as const,
     };

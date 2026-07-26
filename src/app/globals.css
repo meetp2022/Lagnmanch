@@ -17,6 +17,86 @@ body {
   -webkit-tap-highlight-color: transparent;
 }
 
+/* Dark mode */
+html.dark {
+  --color-cream: #1a1a2e;
+  --color-background: #1a1a2e;
+  --color-foreground: #e8e6e3;
+  color-scheme: dark;
+}
+
+html.dark body {
+  background: #1a1a2e;
+  color: #e8e6e3;
+}
+
+html.dark .bg-white {
+  background-color: #16213e;
+}
+
+html.dark .bg-gray-100 {
+  background-color: #1a1a2e;
+}
+
+html.dark .bg-gray-50 {
+  background-color: #16213e;
+}
+
+html.dark .text-gray-900 {
+  color: #e8e6e3;
+}
+
+html.dark .text-gray-800 {
+  color: #d4d2cf;
+}
+
+html.dark .text-gray-700 {
+  color: #c0beb9;
+}
+
+html.dark .text-gray-600 {
+  color: #a8a6a1;
+}
+
+html.dark .text-gray-500 {
+  color: #8a8884;
+}
+
+html.dark .text-gray-400 {
+  color: #6e6c68;
+}
+
+html.dark .border-gray-100,
+html.dark .border-gray-200,
+html.dark .border-gray-300 {
+  border-color: #2a2a4a;
+}
+
+html.dark .shadow-md,
+html.dark .shadow-sm {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+html.dark .hover\:shadow-lg:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+html.dark select,
+html.dark input[type="number"],
+html.dark input[type="text"],
+html.dark input[type="email"],
+html.dark input[type="password"],
+html.dark input[type="tel"],
+html.dark textarea {
+  background-color: #1a1a2e;
+  color: #e8e6e3;
+  border-color: #2a2a4a;
+}
+
+html.dark .bg-cream {
+  background-color: #1a1a2e;
+}
+
 /* Page transition animation */
 @keyframes fadeInUp {
   from {

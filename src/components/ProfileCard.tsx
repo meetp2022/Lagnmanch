@@ -28,7 +28,14 @@ export default function ProfileCard({ profile }: { profile: Profile }) {
         )}
       </div>
       <div className="p-4">
-        <h3 className="font-semibold text-lg text-gray-900">{profile.full_name}</h3>
+        <h3 className="font-semibold text-lg text-gray-900 flex items-center gap-1">
+          {profile.full_name}
+          {profile.profile_status === "approved" && (
+            <svg className="w-4 h-4 text-blue-500 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-label="Verified">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+            </svg>
+          )}
+        </h3>
         <div className="mt-1 space-y-1 text-sm text-gray-600">
           <p>{profile.age} {t.common.years} &middot; {profile.gender === "Male" ? t.common.male : t.common.female}</p>
           <p>{profile.city}</p>

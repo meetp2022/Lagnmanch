@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useTranslation } from "@/components/LanguageProvider";
 import { useAuth } from "@/components/AuthProvider";
 import { AppIcon } from "@/components/LagnaManchLogo";
+import ThemeToggle from "@/components/ThemeToggle";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -41,6 +42,8 @@ export default function Navbar() {
               <span className="text-white/40">|</span>
               <span className={locale === "gu" ? "text-gold font-bold" : "text-white/60"}>ગુજ</span>
             </button>
+
+            <ThemeToggle />
 
             {/* Auth buttons */}
             {!loading && (
@@ -82,6 +85,7 @@ export default function Navbar() {
 
           {/* Mobile: language toggle only (nav is handled by BottomNav) */}
           <div className="flex items-center gap-2 md:hidden">
+            <ThemeToggle />
             <button
               onClick={toggleLanguage}
               className="flex items-center gap-1 bg-gold/20 border border-gold/40 rounded-full px-3 py-1.5 text-xs font-medium hover:bg-gold/30 transition min-h-[36px]"

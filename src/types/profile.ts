@@ -29,6 +29,7 @@ export interface Profile {
   phone_number: string;
   whatsapp_number: string | null;
   hide_contact: boolean;
+  hide_profile: boolean;
   photo_url: string | null;
   profile_status: ProfileStatus;
   created_at: string;

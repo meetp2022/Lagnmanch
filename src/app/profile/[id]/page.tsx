@@ -89,7 +89,14 @@ export default function ProfileDetailPage() {
           <div className="md:w-2/3 p-6 md:p-8">
             <div className="flex items-start justify-between gap-4">
               <div>
-                <h1 className="text-2xl font-bold text-maroon mb-1">{profile.full_name}</h1>
+                <h1 className="text-2xl font-bold text-maroon mb-1 flex items-center gap-2">
+                  {profile.full_name}
+                  {profile.profile_status === "approved" && (
+                    <svg className="w-5 h-5 text-blue-500 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-label="Verified">
+                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                    </svg>
+                  )}
+                </h1>
                 <p className="text-gray-500 mb-6">
                   {profile.age} {t.common.years} &middot; {profile.gender === "Male" ? t.common.male : t.common.female} &middot; {profile.city}
                 </p>

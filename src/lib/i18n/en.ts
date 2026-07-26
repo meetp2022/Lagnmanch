@@ -83,6 +83,11 @@ export const en = {
     adjustFilters: "Try adjusting your search criteria.",
     profilesFound: "profile(s) found",
     loadMore: "Load More",
+    moreFilters: "More Filters",
+    lessFilters: "Less Filters",
+    education: "Education",
+    income: "Income",
+    recentlyJoined: "Recently Joined",
   },
 
   // Create Profile Page
@@ -334,6 +339,8 @@ export const en = {
     pendingMessage: "Your profile is under review. Our team will verify and approve it shortly.",
     rejectedMessage: "Your profile was not approved. Please contact us for more information.",
     approvedMessage: "Your profile is live and visible to other users on the platform.",
+    hideProfileLabel: "Hide my profile",
+    hideProfileHint: "Your profile won't appear in browse results, but you can still access your account.",
     status: {
       pending: "Under Review",
       approved: "Approved",

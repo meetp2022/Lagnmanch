@@ -83,6 +83,11 @@ export const gu = {
     adjustFilters: "તમારા શોધ માપદંડ બદલી જુઓ.",
     profilesFound: "પ્રોફાઇલ મળી",
     loadMore: "વધુ લોડ કરો",
+    moreFilters: "વધુ ફિલ્ટર્સ",
+    lessFilters: "ઓછા ફિલ્ટર્સ",
+    education: "શિક્ષણ",
+    income: "આવક",
+    recentlyJoined: "તાજેતરમાં જોડાયેલા",
   },
 
   // Create Profile Page
@@ -334,6 +339,8 @@ export const gu = {
     pendingMessage: "તમારી પ્રોફાઇલ સમીક્ષા હેઠળ છે. અમારી ટીમ ટૂંક સમયમાં ચકાસશે અને મંજૂર કરશે.",
     rejectedMessage: "તમારી પ્રોફાઇલ મંજૂર થઈ નથી. વધુ માહિતી માટે કૃપા કરી અમારો સંપર્ક કરો.",
     approvedMessage: "તમારી પ્રોફાઇલ લાઇવ છે અને પ્લેટફોર્મ પર અન્ય વપરાશકર્તાઓને દેખાય છે.",
+    hideProfileLabel: "મારી પ્રોફાઇલ છુપાવો",
+    hideProfileHint: "તમારી પ્રોફાઇલ બ્રાઉઝમાં દેખાશે નહીં, પરંતુ તમે તમારું એકાઉન્ટ એક્સેસ કરી શકો છો.",
     status: {
       pending: "સમીક્ષા હેઠળ",
       approved: "મંજૂર",
