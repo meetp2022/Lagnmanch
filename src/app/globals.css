@@ -47,12 +47,10 @@ html.dark .hover\:text-maroon:hover {
   color: #e8808a;
 }
 
-/* Keep maroon text dark on bright backgrounds (gold buttons, etc.) */
-html.dark .bg-gold .text-maroon,
-html.dark .hover\:bg-gold:hover .text-maroon,
-html.dark .bg-gold.text-maroon,
-html.dark .hover\:bg-yellow-400:hover.text-maroon {
-  color: #800020;
+/* Keep maroon text dark on gold/yellow buttons */
+html.dark .text-maroon.bg-gold,
+html.dark .bg-gold > .text-maroon {
+  color: #800020 !important;
 }
 
 /* Maroon backgrounds (hero, navbar, CTA, footer) stay deep and rich */
