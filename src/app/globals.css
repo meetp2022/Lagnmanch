@@ -17,70 +17,139 @@ body {
   -webkit-tap-highlight-color: transparent;
 }
 
-/* Dark mode */
+/*
+ * Dark mode — warm palette
+ *
+ * Base:     #141210  (near-black, warm brown undertone)
+ * Surface:  #1e1b18  (dark brown-grey, for cards/panels)
+ * Elevated: #28241f  (slightly lifted surface)
+ * Border:   #3a342c  (warm dark border)
+ * Maroon:   #d4436a  (lightened for readability on dark)
+ * Gold:     #e8c04a  (slightly brighter for dark backgrounds)
+ * Text:     #f0ece4  (warm cream-white)
+ * Muted:    #b0a898  (warm grey for secondary text)
+ */
+
 html.dark {
-  --color-cream: #1a1a2e;
-  --color-background: #1a1a2e;
-  --color-foreground: #e8e6e3;
+  --color-cream: #141210;
+  --color-background: #141210;
+  --color-foreground: #f0ece4;
+  --color-gold: #e8c04a;
   color-scheme: dark;
 }
 
-html.dark body {
-  background: #1a1a2e;
-  color: #e8e6e3;
+/* Maroon text needs to lighten for readability on dark surfaces */
+html.dark .text-maroon {
+  color: #e8808a;
 }
 
+html.dark .hover\:text-maroon:hover {
+  color: #e8808a;
+}
+
+/* Maroon backgrounds (hero, navbar, CTA, footer) stay deep and rich */
+html.dark .bg-maroon {
+  background-color: #800020;
+}
+
+html.dark .bg-maroon-dark {
+  background-color: #5c0018;
+}
+
+html.dark .hover\:bg-maroon:hover {
+  background-color: #6b001a;
+}
+
+html.dark .hover\:bg-maroon-dark:hover {
+  background-color: #4a0012;
+}
+
+/* Border maroon lightened */
+html.dark .border-maroon {
+  border-color: #e8808a;
+}
+
+html.dark body {
+  background: #141210;
+  color: #f0ece4;
+}
+
+/* Surfaces */
 html.dark .bg-white {
-  background-color: #16213e;
+  background-color: #1e1b18;
 }
 
 html.dark .bg-gray-100 {
-  background-color: #1a1a2e;
+  background-color: #1a1714;
 }
 
 html.dark .bg-gray-50 {
-  background-color: #16213e;
+  background-color: #1e1b18;
 }
 
+html.dark .bg-cream {
+  background-color: #141210;
+}
+
+html.dark section.bg-white {
+  background-color: #1a1714;
+}
+
+html.dark section.bg-cream {
+  background-color: #141210;
+}
+
+/* Text */
 html.dark .text-gray-900 {
-  color: #e8e6e3;
+  color: #f0ece4;
 }
 
 html.dark .text-gray-800 {
-  color: #d4d2cf;
+  color: #e0dbd3;
 }
 
 html.dark .text-gray-700 {
-  color: #c0beb9;
+  color: #c8c1b8;
 }
 
 html.dark .text-gray-600 {
-  color: #a8a6a1;
+  color: #b0a898;
 }
 
 html.dark .text-gray-500 {
-  color: #8a8884;
+  color: #968e82;
 }
 
 html.dark .text-gray-400 {
-  color: #6e6c68;
+  color: #78716a;
 }
 
+html.dark .text-gray-300 {
+  color: #b0a898;
+}
+
+/* Borders */
 html.dark .border-gray-100,
 html.dark .border-gray-200,
 html.dark .border-gray-300 {
-  border-color: #2a2a4a;
+  border-color: #3a342c;
 }
 
+html.dark .border-gray-600 {
+  border-color: #3a342c;
+}
+
+/* Shadows — softer on dark backgrounds */
 html.dark .shadow-md,
 html.dark .shadow-sm {
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
 }
 
 html.dark .hover\:shadow-lg:hover {
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
 }
 
+/* Form inputs */
 html.dark select,
 html.dark input[type="number"],
 html.dark input[type="text"],
@@ -88,68 +157,64 @@ html.dark input[type="email"],
 html.dark input[type="password"],
 html.dark input[type="tel"],
 html.dark textarea {
-  background-color: #1a1a2e;
-  color: #e8e6e3;
-  border-color: #2a2a4a;
+  background-color: #1a1714;
+  color: #f0ece4;
+  border-color: #3a342c;
 }
 
-html.dark .bg-cream {
-  background-color: #1a1a2e;
+html.dark input[type="checkbox"] {
+  accent-color: #e8808a;
 }
 
-/* Bottom nav dark mode */
+/* Focus rings */
+html.dark .focus\:ring-maroon:focus {
+  --tw-ring-color: #e8808a;
+}
+
+html.dark .focus\:border-maroon:focus {
+  border-color: #e8808a;
+}
+
+/* Bottom nav */
 html.dark nav.fixed.bg-white {
-  background-color: #16213e;
-  border-color: #2a2a4a;
+  background-color: #1e1b18;
+  border-color: #3a342c;
 }
 
-/* Alert banners dark mode */
+/* Maroon tint backgrounds */
+html.dark .bg-maroon\/10 {
+  background-color: rgba(212, 67, 106, 0.15);
+}
+
+/* Alert banners — warm-tinted */
 html.dark .bg-green-50 {
-  background-color: #0d2818;
-  border-color: #1a5c30;
-  color: #86efac;
+  background-color: #162016;
+  border-color: #2a4a2a;
 }
 html.dark .bg-green-100 {
-  background-color: #0d2818;
+  background-color: #162016;
 }
 html.dark .text-green-800 {
   color: #86efac;
 }
 
 html.dark .bg-yellow-50 {
-  background-color: #2d2506;
-  border-color: #5c4a0e;
-  color: #fde68a;
+  background-color: #201c0e;
+  border-color: #4a4020;
 }
 html.dark .bg-yellow-100 {
-  background-color: #2d2506;
+  background-color: #201c0e;
 }
 html.dark .text-yellow-800 {
   color: #fde68a;
 }
 
 html.dark .bg-red-50 {
-  background-color: #2d0a0a;
-  border-color: #5c1a1a;
-  color: #fca5a5;
+  background-color: #201010;
+  border-color: #4a2020;
 }
 html.dark .text-red-700 {
   color: #fca5a5;
-}
-
-/* Maroon backgrounds in dark mode — slightly lighten for contrast */
-html.dark .bg-maroon\/10 {
-  background-color: rgba(128, 0, 32, 0.2);
-}
-
-/* How-it-works section */
-html.dark section.bg-white {
-  background-color: #16213e;
-}
-
-/* Checkbox dark mode */
-html.dark input[type="checkbox"] {
-  accent-color: #800020;
 }
 
 /* Page transition animation */
@@ -185,7 +250,7 @@ html.dark input[type="checkbox"] {
 }
 
 html.dark .animate-shimmer {
-  background: linear-gradient(90deg, #1e2a45 25%, #2a3a5c 50%, #1e2a45 75%);
+  background: linear-gradient(90deg, #1e1b18 25%, #28241f 50%, #1e1b18 75%);
   background-size: 200% 100%;
 }
 
