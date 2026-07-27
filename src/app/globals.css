@@ -51,7 +51,9 @@ html.dark .hover\:text-maroon:hover {
 html.dark .text-maroon.bg-gold,
 html.dark .text-maroon.bg-gold:hover,
 html.dark .text-maroon.hover\:bg-yellow-400:hover,
-html.dark .text-maroon.hover\:bg-gold:hover {
+html.dark .text-maroon.hover\:bg-gold:hover,
+html.dark .hover\:text-maroon.hover\:bg-gold:hover,
+html.dark .hover\:text-maroon.bg-gold:hover {
   color: #800020 !important;
 }
 
