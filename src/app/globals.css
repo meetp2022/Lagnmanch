@@ -47,9 +47,11 @@ html.dark .hover\:text-maroon:hover {
   color: #e8808a;
 }
 
-/* Keep maroon text dark on gold/yellow buttons */
+/* Keep maroon text dark on gold/yellow buttons (including hover state) */
 html.dark .text-maroon.bg-gold,
-html.dark .bg-gold > .text-maroon {
+html.dark .text-maroon.bg-gold:hover,
+html.dark .text-maroon.hover\:bg-yellow-400:hover,
+html.dark .text-maroon.hover\:bg-gold:hover {
   color: #800020 !important;
 }
 
